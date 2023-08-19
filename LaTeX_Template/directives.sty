@@ -1,0 +1,49 @@
+% Directives, LaTeX Package
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{directives}
+
+\RequirePackage{etoolbox}
+
+\newtoggle{EnglishToggle}
+\newtoggle{PersianToggle}
+
+\newtoggle{CurriculumVitae}
+\newtoggle{Resume}
+
+\newcommand{\EnglishText}{\toggletrue{EnglishToggle}\togglefalse{PersianToggle}}
+\newcommand{\PersianText}{\toggletrue{PersianToggle}\togglefalse{EnglishToggle}}
+
+\newcommand{\CVText}{\toggletrue{CurriculumVitae}\togglefalse{Resume}}
+\newcommand{\ResumeText}{\toggletrue{Resume}\togglefalse{CurriculumVitae}}
+
+\newcommand{\directivesTest}{
+\noindent
+\iftoggle{CurriculumVitae}{
+  \iftoggle{EnglishToggle}{
+    English Curriculum Vitae\\
+  }{
+    Not English Curriculum Vitae\\
+  }
+  \iftoggle{PersianToggle}{
+    Persian Curriculum Vitae\\
+  }{
+    Not Persian Curriculum Vitae\\
+  }
+}{
+  Not Curriculum Vitae\\
+}
+\iftoggle{Resume}{
+  \iftoggle{EnglishToggle}{
+    English Resume\\
+  }{
+    Not English Resume\\
+  }
+  \iftoggle{PersianToggle}{
+    Persian Resume\\
+  }{
+    Not Persian Resume\\
+  }
+}{
+  Not Resume\\
+}
+}
