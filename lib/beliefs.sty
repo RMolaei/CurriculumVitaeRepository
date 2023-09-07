@@ -5,11 +5,7 @@
 \RequirePackage{arabxetex}
 \RequirePackage[trans={en, fa}]{quran}
 
-\RequirePackage{./../LaTeX_Template/directives}
-
 \newfontfamily\arabicfont[Script=Arabic]{Arabic Typesetting}
-\newfontfamily\farsifont[Script=Arabic]{B Mitra}
-
 
 \newcommand{\myLord}{
 \begin{center}
@@ -17,11 +13,15 @@
 \ToggleAyahNumber\quranayah[1][1]
 \end{arab}
 \iftoggle{PersianToggle}{
-\begin{farsi}[utf]
+\begin{persian}
 \ToggleAyahNumber\quranayahfa[1][1]
-\end{farsi}
+\end{persian}
 }{}
-\iftoggle{EnglishToggle}{\ToggleAyahNumber\quranayahen[1][0-1]}{}
+\iftoggle{EnglishToggle}{
+\begin{latin}
+\ToggleAyahNumber\quranayahen[1][0-1]
+\end{latin}
+}{}
 \end{center}
 }
 
@@ -32,11 +32,15 @@
 \ToggleAyahNumber\quranayah[68][1]
 \end{arab}
 \iftoggle{PersianToggle}{
-\begin{farsi}[utf]
+\begin{persian}
 \ToggleAyahNumber\quranayahfa[68][1]
-\end{farsi}
+\end{persian}
 }{}
-% \iftoggle{EnglishToggle}{\ToggleAyahNumber\quranayahen[68][1]}{}
+% \iftoggle{EnglishToggle}{
+% \begin{latin}
+% \ToggleAyahNumber\quranayahen[68][1]
+% \end{latin}
+% }{}
 \end{center}
 }
 
@@ -47,11 +51,15 @@
 \ToggleAyahNumber\quranayah[21][80]
 \end{arab}
 \iftoggle{PersianToggle}{
-\begin{farsi}[utf]
+\begin{persian}
 \ToggleAyahNumber\quranayahfa[21][80]
-\end{farsi}
+\end{persian}
 }{}
-\iftoggle{EnglishToggle}{\ToggleAyahNumber\quranayahen[21][80]}{}
+\iftoggle{EnglishToggle}{
+\begin{latin}
+\ToggleAyahNumber\quranayahen[21][80]
+\end{latin}
+}{}
 \end{center}
 }
 
@@ -62,11 +70,15 @@
 \ToggleAyahNumber\quranayah[11][37]
 \end{arab}
 \iftoggle{PersianToggle}{
-\begin{farsi}[utf]
+\begin{persian}
 \ToggleAyahNumber\quranayahfa[11][37]
-\end{farsi}
+\end{persian}
 }{}
-\iftoggle{EnglishToggle}{\ToggleAyahNumber\quranayahen[11][37]}{}
+\iftoggle{EnglishToggle}{
+\begin{latin}
+\ToggleAyahNumber\quranayahen[11][37]
+\end{latin}
+}{}
 \end{center}
 }
 

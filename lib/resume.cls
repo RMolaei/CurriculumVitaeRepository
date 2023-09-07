@@ -4,5 +4,5 @@
 
 \LoadClass{article}
 
-\RequirePackage{./../LaTeX_Template/commonPackages}
+\RequirePackage{./../lib/personalData}
 \ResumeText

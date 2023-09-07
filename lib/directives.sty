@@ -16,7 +16,9 @@
 \newcommand{\CVText}{\toggletrue{CurriculumVitae}\togglefalse{Resume}}
 \newcommand{\ResumeText}{\toggletrue{Resume}\togglefalse{CurriculumVitae}}
 
+
 \newcommand{\directivesTest}{
+\begin{latin}
 \noindent
 \iftoggle{CurriculumVitae}{
   \iftoggle{EnglishToggle}{
@@ -46,4 +48,34 @@
 }{
   Not Resume\\
 }
+\end{latin}
+}
+
+
+\newcommand{\directivesTestII}{
+\noindent
+\iftoggle{CurriculumVitae}{
+  \iftoggle{EnglishToggle}{
+    \begin{latin}
+      English Curriculum Vitae
+    \end{latin}
+  }{}
+  \iftoggle{PersianToggle}{
+    \begin{persian}
+      شرح فعالیت فارسی
+    \end{persian}
+  }{}
+}{}
+\iftoggle{Resume}{
+  \iftoggle{EnglishToggle}{
+    \begin{latin}
+      English Resume
+    \end{latin}
+  }{}
+  \iftoggle{PersianToggle}{
+    \begin{persian}
+      خلاصه فعالیت فارسی
+    \end{persian}
+  }{}
+}{}
 }

@@ -1,0 +1,14 @@
+% Information Template, LaTeX Package
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{informationTemplate}
+
+\RequirePackage{./../lib/commonPackages}
+
+\newcommand{\FirstNameCP}[1]{\newcommand{\FirstNameP}{\rl{\xspace #1}}}
+\newcommand{\LastNameCP}[1]{\newcommand{\LastNameP}{\rl{\xspace #1}}}
+\newcommand{\FirstNameCE}[1]{\newcommand{\FirstNameE}{\lr{#1 \xspace}}}
+\newcommand{\LastNameCE}[1]{\newcommand{\LastNameE}{\lr{#1 \xspace}}}
+
+\newcommand{\FirstName}{\iftoggle{EnglishToggle}{\FirstNameE}{}\iftoggle{PersianToggle}{\FirstNameP}{}}
+\newcommand{\LastName}{\iftoggle{EnglishToggle}{\LastNameE}{}\iftoggle{PersianToggle}{\LastNameP}{}}
+\newcommand{\FullName}{\iftoggle{EnglishToggle}{\FirstName \LastName}{}\iftoggle{PersianToggle}{\FirstName \LastName}{}}
