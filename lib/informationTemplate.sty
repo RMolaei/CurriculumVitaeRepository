@@ -4,11 +4,22 @@
 
 \RequirePackage{./../lib/commonPackages}
 
-\newcommand{\FirstNameCP}[1]{\newcommand{\FirstNameP}{\rl{\xspace #1}}}
-\newcommand{\LastNameCP}[1]{\newcommand{\LastNameP}{\rl{\xspace #1}}}
-\newcommand{\FirstNameCE}[1]{\newcommand{\FirstNameE}{\lr{#1 \xspace}}}
-\newcommand{\LastNameCE}[1]{\newcommand{\LastNameE}{\lr{#1 \xspace}}}
 
-\newcommand{\FirstName}{\iftoggle{EnglishToggle}{\FirstNameE}{}\iftoggle{PersianToggle}{\FirstNameP}{}}
-\newcommand{\LastName}{\iftoggle{EnglishToggle}{\LastNameE}{}\iftoggle{PersianToggle}{\LastNameP}{}}
-\newcommand{\FullName}{\iftoggle{EnglishToggle}{\FirstName \LastName}{}\iftoggle{PersianToggle}{\FirstName \LastName}{}}
+\newcommand{\firstNameCE}[1]{\newcommand{\firstNameE}{\lr{#1 \xspace}}}
+\newcommand{\lastNameCE}[1]{\newcommand{\lastNameE}{\lr{#1 \xspace}}}
+\newcommand{\firstNameCP}[1]{\newcommand{\firstNameP}{\rl{\xspace #1}}}
+\newcommand{\lastNameCP}[1]{\newcommand{\lastNameP}{\rl{\xspace #1}}}
+
+\newcommand{\firstName}{\iftoggle{EnglishToggle}{\firstNameE}{}\iftoggle{PersianToggle}{\firstNameP}{}}
+\newcommand{\lastName}{\iftoggle{EnglishToggle}{\lastNameE}{}\iftoggle{PersianToggle}{\lastNameP}{}}
+\newcommand{\fullName}{\iftoggle{EnglishToggle}{\firstName \lastName}{}\iftoggle{PersianToggle}{\firstName \lastName}{}}
+
+
+\newcommand{\aboutCE}[1]{\newcommand{\aboutE}{\begin{latin}#1\end{latin}}}
+\newcommand{\summaryCE}[1]{\newcommand{\summaryE}{\begin{latin}#1\end{latin}}}
+\newcommand{\aboutCP}[1]{\newcommand{\aboutP}{\begin{persian}#1\end{persian}}}
+\newcommand{\summaryCP}[1]{\newcommand{\summaryP}{\begin{persian}#1\end{persian}}}
+
+\newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{\aboutE}{}\iftoggle{Resume}{\summaryE}{}}
+\newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{\aboutP}{}\iftoggle{Resume}{\summaryP}{}}
+\newcommand{\descriptions}{\iftoggle{EnglishToggle}{\descriptionsE}{}\iftoggle{PersianToggle}{\descriptionsP}{}}
