@@ -5,18 +5,18 @@
 \RequirePackage{./../lib/commonPackages}
 
 
-\newcommand{\firstNameCE}[1]{\newcommand{\firstNameE}{\lr{#1 \xspace}}}
-\newcommand{\lastNameCE}[1]{\newcommand{\lastNameE}{\lr{#1 \xspace}}}
-\newcommand{\firstNameCP}[1]{\newcommand{\firstNameP}{\rl{\xspace #1}}}
-\newcommand{\lastNameCP}[1]{\newcommand{\lastNameP}{\rl{\xspace #1}}}
+\newcommand{\firstNameCE}[1]{\newcommand{\firstNameE}{#1\xspace}}
+\newcommand{\lastNameCE}[1]{\newcommand{\lastNameE}{#1\xspace}}
+\newcommand{\firstNameCP}[1]{\newcommand{\firstNameP}{\rl{\xspace#1}}}
+\newcommand{\lastNameCP}[1]{\newcommand{\lastNameP}{\rl{\xspace#1}}}
 
 \newcommand{\firstName}{\iftoggle{EnglishToggle}{\firstNameE}{}\iftoggle{PersianToggle}{\firstNameP}{}}
 \newcommand{\lastName}{\iftoggle{EnglishToggle}{\lastNameE}{}\iftoggle{PersianToggle}{\lastNameP}{}}
 \newcommand{\fullName}{\iftoggle{EnglishToggle}{\firstName \lastName}{}\iftoggle{PersianToggle}{\firstName \lastName}{}}
 
 
-\newcommand{\aboutCE}[1]{\newcommand{\aboutE}{\begin{latin}#1\end{latin}}}
-\newcommand{\summaryCE}[1]{\newcommand{\summaryE}{\begin{latin}#1\end{latin}}}
+\newcommand{\aboutCE}[1]{\newcommand{\aboutE}{#1}}
+\newcommand{\summaryCE}[1]{\newcommand{\summaryE}{#1}}
 \newcommand{\aboutCP}[1]{\newcommand{\aboutP}{\begin{persian}#1\end{persian}}}
 \newcommand{\summaryCP}[1]{\newcommand{\summaryP}{\begin{persian}#1\end{persian}}}
 

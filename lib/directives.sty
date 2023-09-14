@@ -10,8 +10,8 @@
 \newtoggle{CurriculumVitae}
 \newtoggle{Resume}
 
-\newcommand{\EnglishText}{\toggletrue{EnglishToggle}\togglefalse{PersianToggle}}
-\newcommand{\PersianText}{\toggletrue{PersianToggle}\togglefalse{EnglishToggle}}
+\newcommand{\EnglishText}{\toggletrue{EnglishToggle}\togglefalse{PersianToggle}\usepackage{./../lib/efontsettings}}
+\newcommand{\PersianText}{\toggletrue{PersianToggle}\togglefalse{EnglishToggle}\usepackage{./../lib/pfontsettings}}
 
 \newcommand{\CVText}{\toggletrue{CurriculumVitae}\togglefalse{Resume}}
 \newcommand{\ResumeText}{\toggletrue{Resume}\togglefalse{CurriculumVitae}}
@@ -55,27 +55,11 @@
 \newcommand{\directivesTestII}{
 \noindent
 \iftoggle{CurriculumVitae}{
-  \iftoggle{EnglishToggle}{
-    \begin{latin}
-      English Curriculum Vitae
-    \end{latin}
-  }{}
-  \iftoggle{PersianToggle}{
-    \begin{persian}
-      شرح فعالیت فارسی
-    \end{persian}
-  }{}
+\iftoggle{EnglishToggle}{English Curriculum Vitae}{}
+\iftoggle{PersianToggle}{\rl{شرح فعالیت فارسی}}{}
 }{}
 \iftoggle{Resume}{
-  \iftoggle{EnglishToggle}{
-    \begin{latin}
-      English Resume
-    \end{latin}
-  }{}
-  \iftoggle{PersianToggle}{
-    \begin{persian}
-      خلاصه فعالیت فارسی
-    \end{persian}
-  }{}
+\iftoggle{EnglishToggle}{English Resume}{}
+\iftoggle{PersianToggle}{\rl{خلاصه فعالیت فارسی}}{}
 }{}
 }
