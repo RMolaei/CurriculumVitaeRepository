@@ -28,13 +28,16 @@
 
 
 % Acronym
-\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{#1\toggletrue{#3} (#2)\xspace}}
-\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{#1\toggletrue{#3} (#2)\xspace}}
+\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3} (#2)\xspace}}
+\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3} (#2)\xspace}}
 
 \newcommand{\acronymC}[5]{\expandafter\newcommand\csname #5\endcsname
 {\iftoggle{EnglishToggle}{\acronymE{#1}{#2}{#5}}{}\iftoggle{PersianToggle}{\acronymP{#3}{#4}{#5}}{}}
 \newtoggle{#5}}
 
+\newcommand{\acronymlist}{\iftoggle{EnglishToggle}{List of abbreviations and acronyms:}{}\iftoggle{PersianToggle}{فهرست اختصارات و کلمات اختصاری:}{}}
+\newcommand{\acronymlistC}[3]{\expandafter\let\csname acronymlistbefore#3\endcsname\acronymlist
+\renewcommand{\acronymlist}{\expandafter\csname acronymlistbefore#3\endcsname \\\iftoggle{EnglishToggle}{#1 #2}{}\iftoggle{PersianToggle}{#1 #2}{}}}
 
 % institute
 % \newcommand{\instituteCE}[7]{\newcommand{\instituteE}{???}}
