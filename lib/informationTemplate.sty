@@ -5,21 +5,37 @@
 \RequirePackage{./../lib/commonPackages}
 
 
+% Name
 \newcommand{\firstNameCE}[1]{\newcommand{\firstNameE}{#1\xspace}}
 \newcommand{\lastNameCE}[1]{\newcommand{\lastNameE}{#1\xspace}}
-\newcommand{\firstNameCP}[1]{\newcommand{\firstNameP}{\rl{\xspace#1}}}
-\newcommand{\lastNameCP}[1]{\newcommand{\lastNameP}{\rl{\xspace#1}}}
+\newcommand{\firstNameCP}[1]{\newcommand{\firstNameP}{#1\xspace}}
+\newcommand{\lastNameCP}[1]{\newcommand{\lastNameP}{#1\xspace}}
 
 \newcommand{\firstName}{\iftoggle{EnglishToggle}{\firstNameE}{}\iftoggle{PersianToggle}{\firstNameP}{}}
 \newcommand{\lastName}{\iftoggle{EnglishToggle}{\lastNameE}{}\iftoggle{PersianToggle}{\lastNameP}{}}
 \newcommand{\fullName}{\iftoggle{EnglishToggle}{\firstName \lastName}{}\iftoggle{PersianToggle}{\firstName \lastName}{}}
 
 
-\newcommand{\aboutCE}[1]{\newcommand{\aboutE}{#1}}
-\newcommand{\summaryCE}[1]{\newcommand{\summaryE}{#1}}
-\newcommand{\aboutCP}[1]{\newcommand{\aboutP}{\begin{persian}#1\end{persian}}}
-\newcommand{\summaryCP}[1]{\newcommand{\summaryP}{\begin{persian}#1\end{persian}}}
+% Descriptions
+\newcommand{\aboutCE}[1]{\newcommand{\aboutE}{#1\xspace}}
+\newcommand{\summaryCE}[1]{\newcommand{\summaryE}{#1\xspace}}
+\newcommand{\aboutCP}[1]{\newcommand{\aboutP}{#1\xspace}}
+\newcommand{\summaryCP}[1]{\newcommand{\summaryP}{#1\xspace}}
 
 \newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{\aboutE}{}\iftoggle{Resume}{\summaryE}{}}
 \newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{\aboutP}{}\iftoggle{Resume}{\summaryP}{}}
 \newcommand{\descriptions}{\iftoggle{EnglishToggle}{\descriptionsE}{}\iftoggle{PersianToggle}{\descriptionsP}{}}
+
+
+% Acronym
+\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{#1\toggletrue{#3} (#2)\xspace}}
+\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{#1\toggletrue{#3} (#2)\xspace}}
+
+\newcommand{\acronymC}[5]{\expandafter\newcommand\csname #5\endcsname
+{\iftoggle{EnglishToggle}{\acronymE{#1}{#2}{#5}}{}\iftoggle{PersianToggle}{\acronymP{#3}{#4}{#5}}{}}
+\newtoggle{#5}}
+
+
+% institute
+% \newcommand{\instituteCE}[7]{\newcommand{\instituteE}{???}}
+% \newcommand{\instituteCP}[7]{\newcommand{\instituteP}{???}}
