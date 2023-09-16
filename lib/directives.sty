@@ -3,6 +3,7 @@
 \ProvidesPackage{directives}
 
 \RequirePackage{etoolbox}
+\RequirePackage{xspace}
 
 \newtoggle{EnglishToggle}
 \newtoggle{PersianToggle}
@@ -18,7 +19,6 @@
 
 
 \newcommand{\directivesTest}{
-\begin{latin}
 \noindent
 \iftoggle{CurriculumVitae}{
   \iftoggle{EnglishToggle}{
@@ -48,18 +48,7 @@
 }{
   Not Resume\\
 }
-\end{latin}
 }
 
 
-\newcommand{\directivesTestII}{
-\noindent
-\iftoggle{CurriculumVitae}{
-\iftoggle{EnglishToggle}{English Curriculum Vitae}{}
-\iftoggle{PersianToggle}{\rl{شرح فعالیت فارسی}}{}
-}{}
-\iftoggle{Resume}{
-\iftoggle{EnglishToggle}{English Resume}{}
-\iftoggle{PersianToggle}{\rl{خلاصه فعالیت فارسی}}{}
-}{}
-}
+\newcommand{\directivesTestII}{\noindent\iftoggle{CurriculumVitae}{\iftoggle{EnglishToggle}{English Curriculum Vitae\xspace}{}\iftoggle{PersianToggle}{شرح فعالیت فارسی\xspace}{}}{}\iftoggle{Resume}{\iftoggle{EnglishToggle}{English Resume\xspace}{}\iftoggle{PersianToggle}{خلاصه فعالیت فارسی\xspace}{}}{}}
