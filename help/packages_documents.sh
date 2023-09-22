@@ -12,4 +12,8 @@ texdoc xepersian
 texdoc microtype
 # microtype used in .\lib\commonPackages.sty
 texdoc geometry
-# geometry used in .\lib\commonPackages.sty
+# geometry used in .\lib\pagelayout.sty
+texdoc fancyhdr
+# fancyhdr used in .\lib\pagelayout.sty
+texdoc lastpage
+# lastpage used in .\lib\pagelayout.sty

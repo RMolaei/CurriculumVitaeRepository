@@ -12,4 +12,8 @@ texdoc xepersian
 texdoc microtype
 @REM microtype used in .\lib\commonPackages.sty
 texdoc geometry
-@REM geometry used in .\lib\commonPackages.sty
+@REM geometry used in .\lib\pagelayout.sty
+texdoc fancyhdr
+@REM fancyhdr used in .\lib\pagelayout.sty
+texdoc lastpage
+@REM lastpage used in .\lib\pagelayout.sty
