@@ -16,6 +16,11 @@
 \newcommand{\fullName}{\iftoggle{EnglishToggle}{\firstName \lastName}{}\iftoggle{PersianToggle}{\firstName \lastName}{}}
 
 
+% Address
+\newcommand{\addressE}[2]{\iftoggle{CurriculumVitae}{#1, #2}{}\iftoggle{Resume}{#1}{}}
+\newcommand{\addressP}[2]{\iftoggle{CurriculumVitae}{#1, #2}{}\iftoggle{Resume}{#1}{}}
+
+
 % Descriptions
 \newcommand{\aboutCE}[1]{\newcommand{\aboutE}{#1\xspace}}
 \newcommand{\summaryCE}[1]{\newcommand{\summaryE}{#1\xspace}}
@@ -39,6 +44,18 @@
 \newcommand{\acronymlistC}[3]{\expandafter\let\csname acronymlistbefore#3\endcsname\acronymlist
 \renewcommand{\acronymlist}{\expandafter\csname acronymlistbefore#3\endcsname \\\iftoggle{EnglishToggle}{#1 #2}{}\iftoggle{PersianToggle}{#1 #2}{}}}
 
-% institute
-% \newcommand{\instituteCE}[7]{\newcommand{\instituteE}{???}}
-% \newcommand{\instituteCP}[7]{\newcommand{\instituteP}{???}}
+
+% Institute
+\newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{#1, #2, #3, #4}{}\iftoggle{Resume}{#1, #3, #4}{}}
+\newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{#1, #2, #3, \lr{#4}}{}\iftoggle{Resume}{#1, #3, \lr{#4}}{}}
+
+\newcommand{\instituteC}[8]{
+\expandafter\newcommand\csname #8\endcsname
+{\iftoggle{EnglishToggle}{\instituteE{#1}{#2}{#3}{#7}{#8}}{}\iftoggle{PersianToggle}{\instituteP{#4}{#5}{#6}{#7}{#8}}{}}
+}
+
+
+% Cooperation period
+
+
+% Job position
