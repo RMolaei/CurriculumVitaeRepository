@@ -55,7 +55,29 @@
 }
 
 
+% Types of employment
+\newcommand{\fulltime}{\iftoggle{EnglishToggle}{Full time}{}\iftoggle{PersianToggle}{تمام وقت}{}}
+\newcommand{\parttime}{\iftoggle{EnglishToggle}{Part time}{}\iftoggle{PersianToggle}{پاره وقت}{}}
+
+
 % Cooperation period
+\newcommand{\cooperationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}
+\expandafter\newcommand\csname #2\arabic{#2}\endcsname{#1}\addtocounter{#2}{1}\workExperienceListC{#2}}
+
+\newcommand{\cooperationPeriodUpdate}[1]{\expandafter\renewcommand\csname #1\endcsname
+{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname \\}}}
 
 
 % Job position
+\newcommand{\jobPositionE}[6]{#1, #3, #4 #5 \\ #2}
+\newcommand{\jobPositionP}[6]{#1, #3, #4 #5 \\ #2}
+
+\newcommand{\jobPositionC}[8]{\expandafter\newcommand\csname #8\arabic{#8}\endcsname
+{\iftoggle{EnglishToggle}{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}
+\addtocounter{#8}{1}\cooperationPeriodUpdate{#8}}
+
+
+% Work Experience
+\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}{Work Experience:}{}\iftoggle{PersianToggle}{سوابق کاری:}{}}
+\newcommand{\workExperienceListC}[1]{\expandafter\let\csname workExperienceListbefore#1\endcsname\workExperienceList
+\renewcommand{\workExperienceList}{\expandafter\csname workExperienceListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}

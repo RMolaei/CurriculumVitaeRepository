@@ -11,6 +11,8 @@ texdoc xepersian
 # xepersian used in .\lib\pfontsettings.sty
 texdoc microtype
 # microtype used in .\lib\commonPackages.sty
+texdoc forloop
+# forloop used in .\lib\commonPackages.sty
 texdoc geometry
 # geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr

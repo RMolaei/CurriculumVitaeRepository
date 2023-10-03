@@ -11,6 +11,8 @@ texdoc xepersian
 @REM xepersian used in .\lib\pfontsettings.sty
 texdoc microtype
 @REM microtype used in .\lib\commonPackages.sty
+texdoc forloop
+@REM forloop used in .\lib\commonPackages.sty
 texdoc geometry
 @REM geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr
