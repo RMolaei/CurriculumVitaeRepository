@@ -4,6 +4,22 @@
 
 \RequirePackage{./../lib/commonPackages}
 
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,      
+  urlcolor=cyan,
+%   pdftitle={Overleaf Example},
+%   pdfpagemode=FullScreen,
+}
+
+\setitemize{
+  topsep=0cm,
+  partopsep=0cm,
+  parsep=0cm,
+  itemsep=0cm
+}
+
 
 % Name
 \newcommand{\firstNameCE}[1]{\newcommand{\firstNameE}{#1\xspace}}
@@ -46,8 +62,14 @@
 
 
 % Institute
-\newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{#1, #2, #3, #4}{}\iftoggle{Resume}{#1, #3, #4}{}}
-\newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{#1, #2, #3, \lr{#4}}{}\iftoggle{Resume}{#1, #3, \lr{#4}}{}}
+\newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}
+{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}}
+{}\iftoggle{Resume}
+{\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
+\newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}
+{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}}
+{}\iftoggle{Resume}
+{\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
 
 \newcommand{\instituteC}[8]{
 \expandafter\newcommand\csname #8\endcsname
@@ -65,12 +87,14 @@
 \expandafter\newcommand\csname #2\arabic{#2}\endcsname{#1}\addtocounter{#2}{1}\workExperienceListC{#2}}
 
 \newcommand{\cooperationPeriodUpdate}[1]{\expandafter\renewcommand\csname #1\endcsname
-{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname \\}}}
+{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname\\}}}
 
 
 % Job position
-\newcommand{\jobPositionE}[6]{#1, #3, #4 #5 \\ #2}
-\newcommand{\jobPositionP}[6]{#1, #3, #4 #5 \\ #2}
+\newcommand{\jobPositionE}[6]{\colorbox{gray}
+{\bfseries\color{white}\parbox{99mm}{#1}\parbox{20mm}{\centering#3}\parbox{70mm}{\raggedleft#4 to #5}}\\#2\ }
+\newcommand{\jobPositionP}[6]{\colorbox{gray}
+{\bfseries\color{white}\parbox{99mm}{\ #1}\parbox{20mm}{\centering#3}\parbox{70mm}{\raggedright#4 الی #5}}\\#2\ }
 
 \newcommand{\jobPositionC}[8]{\expandafter\newcommand\csname #8\arabic{#8}\endcsname
 {\iftoggle{EnglishToggle}{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}

@@ -13,6 +13,12 @@ texdoc microtype
 # microtype used in .\lib\commonPackages.sty
 texdoc forloop
 # forloop used in .\lib\commonPackages.sty
+texdoc hyperref
+# hyperref used in .\lib\commonPackages.sty
+texdoc xcolor
+# xcolor used in .\lib\commonPackages.sty
+texdoc enumitem
+# enumitem used in .\lib\commonPackages.sty
 texdoc geometry
 # geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr
