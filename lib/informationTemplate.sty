@@ -7,8 +7,8 @@
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
-  filecolor=magenta,      
-  urlcolor=cyan,
+  filecolor=magenta,
+  urlcolor=teal,
 %   pdftitle={Overleaf Example},
 %   pdfpagemode=FullScreen,
 }
@@ -19,6 +19,20 @@
   parsep=0cm,
   itemsep=0cm
 }
+
+\setlength{\parindent}{2mm}
+
+
+% Date
+\newcommand{\dateEP}[2]{\iftoggle{EnglishToggle}{#1}{}\iftoggle{PersianToggle}{#2}{}}
+
+
+% Email
+\newcommand{\email}[1]{\iftoggle{EnglishToggle}{\href{mailto: #1}{#1}}{}\iftoggle{PersianToggle}{\lr{\href{mailto: #1}{#1}}}{}}
+
+
+% Phone
+\newcommand{\phone}[2]{\iftoggle{EnglishToggle}{\href{tel: #1}{#1}}{}\iftoggle{PersianToggle}{\href{tel: #2}{#2}}{}}
 
 
 % Name
@@ -31,10 +45,51 @@
 \newcommand{\lastName}{\iftoggle{EnglishToggle}{\lastNameE}{}\iftoggle{PersianToggle}{\lastNameP}{}}
 \newcommand{\fullName}{\iftoggle{EnglishToggle}{\firstName \lastName}{}\iftoggle{PersianToggle}{\firstName \lastName}{}}
 
+% Born Data
+\newcommand{\bornDataC}[3]{\newcommand{\bornData}{\iftoggle{EnglishToggle}
+{\iftoggle{CurriculumVitae}{#3 #1\xspace}{}\iftoggle{Resume}{#3\xspace}{}}
+{}\iftoggle{PersianToggle}
+{\iftoggle{CurriculumVitae}{#3 #2\xspace}{}\iftoggle{Resume}{#3\xspace}{}}{}}}
+
+% Marital StateCE
+\newcommand{\maritalStateCE}[1]{\newcommand{\maritalStateE}{#1\xspace}}
+\newcommand{\maritalStateCP}[1]{\newcommand{\maritalStateP}{#1\xspace}}
+
+\newcommand{\maritalState}{\iftoggle{EnglishToggle}{\maritalStateE}{}\iftoggle{PersianToggle}{\maritalStateP}{}}
+
+% Military service
+\newcommand{\militaryServiceCE}[1]{\newcommand{\militaryServiceE}{#1\xspace}}
+\newcommand{\militaryServiceCP}[1]{\newcommand{\militaryServiceP}{#1\xspace}}
+
+\newcommand{\militaryService}{\iftoggle{EnglishToggle}{\militaryServiceE}{}\iftoggle{PersianToggle}{\militaryServiceP}{}}
+
 
 % Address
-\newcommand{\addressE}[2]{\iftoggle{CurriculumVitae}{#1, #2}{}\iftoggle{Resume}{#1}{}}
+\newcommand{\addressE}[2]{\iftoggle{CurriculumVitae}{#2, #1}{}\iftoggle{Resume}{#1}{}}
 \newcommand{\addressP}[2]{\iftoggle{CurriculumVitae}{#1, #2}{}\iftoggle{Resume}{#1}{}}
+
+
+% Contact Information
+\newcommand{\fullAddressC}[3]{\newcommand{\fullAddress}{\iftoggle{EnglishToggle}{#1}{}\iftoggle{PersianToggle}{#2}{}\iftoggle{CurriculumVitae}{\iftoggle{EnglishToggle}{, Postal code:}{}\iftoggle{PersianToggle}{, کدپستی:}{} #3\xspace}{}}}
+
+\newcommand{\mobilePhoneIC}[1]{\newcommand{\mobilePhoneI}{#1\xspace}}
+\newcommand{\mobilePhoneIIC}[1]{\newcommand{\mobilePhoneII}{#1\xspace}}
+
+\newcommand{\phoneNumberC}[1]{\newcommand{\phoneNumber}{#1\xspace}}
+
+\newcommand{\emailIC}[1]{\newcommand{\emailI}{#1\xspace}}
+\newcommand{\emailIIC}[1]{\newcommand{\emailII}{#1\xspace}}
+
+\newcommand{\skypeC}[1]{\newcommand{\skype}{\iftoggle{EnglishToggle}{\href{skypeto: #1}{#1}}{}\iftoggle{PersianToggle}{\lr{\href{skypeto: #1}{#1}}}{}}}
+
+\newcommand{\gitHubC}[1]{\newcommand{\gitHub}{\url{#1}}}
+
+\newcommand{\linkedinC}[1]{\newcommand{\linkedin}{\url{#1}}}
+
+
+% Profession
+\newcommand{\ProfessionIC}[2]{\newcommand{\ProfessionI}{\iftoggle{EnglishToggle}{#1}{}\iftoggle{PersianToggle}{#2}{}}}
+\newcommand{\ProfessionIIC}[2]{\newcommand{\ProfessionII}{\iftoggle{EnglishToggle}{#1}{}\iftoggle{PersianToggle}{#2}{}}}
 
 
 % Descriptions
@@ -43,8 +98,8 @@
 \newcommand{\aboutCP}[1]{\newcommand{\aboutP}{#1\xspace}}
 \newcommand{\summaryCP}[1]{\newcommand{\summaryP}{#1\xspace}}
 
-\newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{\aboutE}{}\iftoggle{Resume}{\summaryE}{}}
-\newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{\aboutP}{}\iftoggle{Resume}{\summaryP}{}}
+\newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{{About}\par\aboutE}{}\iftoggle{Resume}{{Summary}\par\summaryE}{}}
+\newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{{درباره}\par\aboutP}{}\iftoggle{Resume}{{خلاصه}\par\summaryP}{}}
 \newcommand{\descriptions}{\iftoggle{EnglishToggle}{\descriptionsE}{}\iftoggle{PersianToggle}{\descriptionsP}{}}
 
 
@@ -102,6 +157,6 @@
 
 
 % Work Experience
-\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}{Work Experience:}{}\iftoggle{PersianToggle}{سوابق کاری:}{}}
+\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}{{Work Experience}}{}\iftoggle{PersianToggle}{{سوابق کاری}}{}}
 \newcommand{\workExperienceListC}[1]{\expandafter\let\csname workExperienceListbefore#1\endcsname\workExperienceList
 \renewcommand{\workExperienceList}{\expandafter\csname workExperienceListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}

@@ -19,6 +19,8 @@ texdoc xcolor
 # xcolor used in .\lib\commonPackages.sty
 texdoc enumitem
 # enumitem used in .\lib\commonPackages.sty
+texdoc indentfirst
+# indentfirst used in .\lib\commonPackages.sty
 texdoc geometry
 # geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr
