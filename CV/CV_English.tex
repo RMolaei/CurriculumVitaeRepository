@@ -6,6 +6,7 @@
 
 \begin{document}
 \myLord
+\iftoggle{Dev}{\input{./../info/edummytext}\par}{}
 \noindent\parbox{53mm}
 {\parbox{53mm}{\raggedright\Huge\bfseries\color{cyan}\fullName}\\\parbox{53mm}{\centering Born in \bornData}}\quad\parbox{40mm}
 {Marital state: \maritalState\\Military service: \militaryService}\quad\parbox{91mm}
@@ -15,6 +16,6 @@ Address: \fullAddress\\
 
 \descriptions
 
-\input{./../info/edummytext}
+\workExperience
 
 \end{document}

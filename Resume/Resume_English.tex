@@ -6,6 +6,7 @@
 
 \begin{document}
 \myLord
+\iftoggle{Dev}{\input{./../info/edummytext}\par}{}
 \noindent\parbox{53mm}
 {\parbox{53mm}{\raggedright\Huge\bfseries\color{cyan}\fullName}\\\parbox{53mm}{\centering Born in \bornData}}\quad\quad\parbox{64mm}
 {Profession: \ProfessionI\\Resident: \fullAddress}\quad\parbox{64mm}
@@ -13,6 +14,6 @@
 
 \descriptions
 
-\input{./../info/edummytext}
+\workExperience
 
 \end{document}

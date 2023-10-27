@@ -98,8 +98,8 @@
 \newcommand{\aboutCP}[1]{\newcommand{\aboutP}{#1\xspace}}
 \newcommand{\summaryCP}[1]{\newcommand{\summaryP}{#1\xspace}}
 
-\newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{{About}\par\aboutE}{}\iftoggle{Resume}{{Summary}\par\summaryE}{}}
-\newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{{درباره}\par\aboutP}{}\iftoggle{Resume}{{خلاصه}\par\summaryP}{}}
+\newcommand{\descriptionsE}{\iftoggle{CurriculumVitae}{\section*{About}\aboutE}{}\iftoggle{Resume}{\section*{Summary}\summaryE}{}}
+\newcommand{\descriptionsP}{\iftoggle{CurriculumVitae}{\section*{درباره}\aboutP}{}\iftoggle{Resume}{\section*{خلاصه}\summaryP}{}}
 \newcommand{\descriptions}{\iftoggle{EnglishToggle}{\descriptionsE}{}\iftoggle{PersianToggle}{\descriptionsP}{}}
 
 
@@ -157,6 +157,9 @@
 
 
 % Work Experience
-\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}{{Work Experience}}{}\iftoggle{PersianToggle}{{سوابق کاری}}{}}
+\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}
+{\iftoggle{CurriculumVitae}{Detail of experiences:}{}\iftoggle{Resume}{Selection of experiences:}{}}{}\iftoggle{PersianToggle}
+{\iftoggle{CurriculumVitae}{مشروح تجربیات:}{}\iftoggle{Resume}{گزیده تجربیات:}{}}{}}
 \newcommand{\workExperienceListC}[1]{\expandafter\let\csname workExperienceListbefore#1\endcsname\workExperienceList
 \renewcommand{\workExperienceList}{\expandafter\csname workExperienceListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}
+\newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceList}
