@@ -163,3 +163,71 @@
 \newcommand{\workExperienceListC}[1]{\expandafter\let\csname workExperienceListbefore#1\endcsname\workExperienceList
 \renewcommand{\workExperienceList}{\expandafter\csname workExperienceListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}
 \newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceList}
+
+
+% Education period
+\newcommand{\educationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\newcounter{#2i}\newcounter{#2ii}
+\expandafter\newcommand\csname #2\arabic{#2}\endcsname{#1}\addtocounter{#2}{1}\educationListC{#2}}
+
+\newcommand{\educationPeriodUpdate}[1]{\expandafter\renewcommand\csname #1\endcsname
+{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname\\}}}
+
+
+% Education grade
+\newcommand{\educationGradeE}[9]{\colorbox{brown}
+{\bfseries\color{white}\parbox{90mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{70mm}{\raggedleft#6 to #7}}\\
+{\bfseries\color{darkgray}\ \parbox{90mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{70mm}{\raggedleft#4}}\\}
+\newcommand{\educationGradeP}[9]{\colorbox{brown}
+{\bfseries\color{white}\parbox{90mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{70mm}{\raggedright#6 الی #7}}\\
+{\bfseries\color{darkgray}\parbox{90mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{70mm}{\raggedright#4}}\\}
+
+\newcommand{\educationGradeCI}[9]{
+\expandafter\def\csname tempa#9\arabic{#9i}\endcsname{#1}
+\expandafter\def\csname tempb#9\arabic{#9i}\endcsname{#2}
+\expandafter\def\csname tempc#9\arabic{#9i}\endcsname{#3}
+\expandafter\def\csname tempd#9\arabic{#9i}\endcsname{#4}
+\expandafter\def\csname tempe#9\arabic{#9i}\endcsname{#5}
+\expandafter\def\csname tempf#9\arabic{#9i}\endcsname{#6}
+\expandafter\def\csname tempg#9\arabic{#9i}\endcsname{#7}
+\expandafter\def\csname temph#9\arabic{#9i}\endcsname{#8}}
+\newcommand{\educationGradeCII}[7]{
+\expandafter\def\csname tempi#7\arabic{#7i}\endcsname{#1}
+\expandafter\def\csname tempj#7\arabic{#7i}\endcsname{#2}
+\expandafter\def\csname tempk#7\arabic{#7i}\endcsname{#3}
+\expandafter\def\csname templ#7\arabic{#7i}\endcsname{#4}
+\expandafter\def\csname tempm#7\arabic{#7i}\endcsname{#5}
+\expandafter\def\csname tempn#7\arabic{#7i}\endcsname{#6}
+\addtocounter{#7i}{1}\educationGradeC{#7}}
+\newcommand{\educationGradeC}[1]{\expandafter\newcommand\csname #1\arabic{#1}\endcsname{\iftoggle{EnglishToggle}{\educationGradeE
+{\csname tempa#1\arabic{#1ii}\endcsname}
+{\csname tempb#1\arabic{#1ii}\endcsname}
+{\csname tempc#1\arabic{#1ii}\endcsname}
+{\csname tempd#1\arabic{#1ii}\endcsname}
+{\csname tempk#1\arabic{#1ii}\endcsname}
+{\csname templ#1\arabic{#1ii}\endcsname}
+{\csname tempm#1\arabic{#1ii}\endcsname}
+{\csname tempn#1\arabic{#1ii}\endcsname}
+{#1}\csname tempi#1\arabic{#1ii}\endcsname}{}
+\iftoggle{PersianToggle}{\educationGradeP
+{\csname tempe#1\arabic{#1ii}\endcsname}
+{\csname tempf#1\arabic{#1ii}\endcsname}
+{\csname tempg#1\arabic{#1ii}\endcsname}
+{\csname temph#1\arabic{#1ii}\endcsname}
+{\csname tempk#1\arabic{#1ii}\endcsname}
+{\csname templ#1\arabic{#1ii}\endcsname}
+{\csname tempm#1\arabic{#1ii}\endcsname}
+{\csname tempn#1\arabic{#1ii}\endcsname}
+{#1}\csname tempj#1\arabic{#1ii}\endcsname}{}\addtocounter{#1ii}{1}}\addtocounter{#1}{1}\educationPeriodUpdate{#1}}
+
+
+% Education
+\newcommand{\educationList}{\iftoggle{EnglishToggle}
+{\iftoggle{CurriculumVitae}{Detail of education:}{}\iftoggle{Resume}{Selection of education:}{}}{}\iftoggle{PersianToggle}
+{\iftoggle{CurriculumVitae}{شرح تحصیلی:}{}\iftoggle{Resume}{گزیده تحصیلی:}{}}{}}
+\newcommand{\educationListC}[1]{\expandafter\let\csname educationListbefore#1\endcsname\educationList
+\renewcommand{\educationList}{\expandafter\csname educationListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}
+\newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationList}
+
+
+% GPA
+\newcommand{\gpa}[2]{\iftoggle{EnglishToggle}{#1/#2}{}\iftoggle{PersianToggle}{$#1$ از $#2$}{}}
