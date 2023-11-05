@@ -174,12 +174,12 @@
 
 
 % Education grade
-\newcommand{\educationGradeE}[9]{\colorbox{brown}
-{\bfseries\color{white}\parbox{90mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{70mm}{\raggedleft#6 to #7}}\\
-{\bfseries\color{darkgray}\ \parbox{90mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{70mm}{\raggedleft#4}}\\}
-\newcommand{\educationGradeP}[9]{\colorbox{brown}
-{\bfseries\color{white}\parbox{90mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{70mm}{\raggedright#6 الی #7}}\\
-{\bfseries\color{darkgray}\parbox{90mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{70mm}{\raggedright#4}}\\}
+\newcommand{\educationGradeE}[9]{\parbox{190mm}{\colorbox{brown}
+{\bfseries\color{white}\parbox{85mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedleft#6 to #7}}\\
+{\bfseries\color{darkgray}\ \parbox{85mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{75mm}{\raggedleft#4}}}\\}
+\newcommand{\educationGradeP}[9]{\parbox{190mm}{\colorbox{brown}
+{\bfseries\color{white}\parbox{85mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedright#6 الی #7}}\\
+{\bfseries\color{darkgray}\parbox{85mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{75mm}{\raggedright#4}}}\\}
 
 \newcommand{\educationGradeCI}[9]{
 \expandafter\def\csname tempa#9\arabic{#9i}\endcsname{#1}
@@ -207,7 +207,7 @@
 {\csname templ#1\arabic{#1ii}\endcsname}
 {\csname tempm#1\arabic{#1ii}\endcsname}
 {\csname tempn#1\arabic{#1ii}\endcsname}
-{#1}\csname tempi#1\arabic{#1ii}\endcsname}{}
+{#1}\csname tempi#1\arabic{#1ii}\endcsname\ }{}
 \iftoggle{PersianToggle}{\educationGradeP
 {\csname tempe#1\arabic{#1ii}\endcsname}
 {\csname tempf#1\arabic{#1ii}\endcsname}
@@ -217,7 +217,7 @@
 {\csname templ#1\arabic{#1ii}\endcsname}
 {\csname tempm#1\arabic{#1ii}\endcsname}
 {\csname tempn#1\arabic{#1ii}\endcsname}
-{#1}\csname tempj#1\arabic{#1ii}\endcsname}{}\addtocounter{#1ii}{1}}\addtocounter{#1}{1}\educationPeriodUpdate{#1}}
+{#1}\csname tempj#1\arabic{#1ii}\endcsname\ }{}\addtocounter{#1ii}{1}}\addtocounter{#1}{1}\educationPeriodUpdate{#1}}
 
 
 % Education
