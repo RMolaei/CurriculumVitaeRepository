@@ -147,9 +147,9 @@
 
 % Job position
 \newcommand{\jobPositionE}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{99mm}{#1}\parbox{20mm}{\centering#3}\parbox{70mm}{\raggedleft#4 to #5}}\\#2\ }
+{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2\ }
 \newcommand{\jobPositionP}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{99mm}{\ #1}\parbox{20mm}{\centering#3}\parbox{70mm}{\raggedright#4 الی #5}}\\#2\ }
+{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2\ }
 
 \newcommand{\jobPositionC}[8]{\expandafter\newcommand\csname #8\arabic{#8}\endcsname
 {\iftoggle{EnglishToggle}{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}
@@ -231,3 +231,27 @@
 
 % GPA
 \newcommand{\gpa}[2]{\iftoggle{EnglishToggle}{#1/#2}{}\iftoggle{PersianToggle}{$#1$ از $#2$}{}}
+
+
+% Craft
+\newcounter{craftindex}\setcounter{craftindex}{0}
+\newcounter{maxcraftindex}\setcounter{maxcraftindex}{3}
+\newcommand{\craftC}[7]{\expandafter\newcommand\csname craft\arabic{craftindex}\endcsname
+{\iftoggle{EnglishToggle}{\craftE{#1}{#2}{#3}{#7}}{}\iftoggle{PersianToggle}{\craftP{#4}{#5}{#6}{#7}}{}}\addtocounter{craftindex}{1}}
+
+\newcommand{\craftE}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
+{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}\iftoggle{Resume}{\parbox{190mm}{\colorbox{olive}
+{\bfseries\color{white}\parbox{190mm}{\centering#1}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}}
+\newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
+{\ \bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedright#4}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}\iftoggle{Resume}
+{\parbox{190mm}{\colorbox{olive}
+{\bfseries\color{white}\parbox{190mm}{\centering#1}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}}
+
+\newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
+{\noindent\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\csname craft\arabic{craftjndex}\endcsname}}{}\iftoggle{Resume}
+{\noindent\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\csname craft\arabic{craftkndex}\endcsname}}}
+\newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}
