@@ -164,7 +164,7 @@
 % Work Experience
 \newcommand{\workExperienceListC}{\iftoggle{CurriculumVitae}
 {\newcounter{JPjndex}\forloop{JPjndex}{0}{\value{JPjndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}}
+{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}{}}
 \newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceListC}
 
 
@@ -249,7 +249,7 @@
 % Education
 \newcommand{\educationListC}{\iftoggle{CurriculumVitae}
 {\newcounter{EGjndex}\forloop{EGjndex}{0}{\value{EGjndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGjndex}\endcsname{EGjndex}\par}}{}\iftoggle{Resume}
-{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}}
+{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}{}}
 \newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationListC}
 
 
@@ -277,5 +277,34 @@
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
 {\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}}}
+{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}}{}}
 \newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}
+
+
+% Voluntary Cooperation period
+\newcounter{voluntaryPositionindex}\setcounter{voluntaryPositionindex}{0}
+\newcommand{\voluntaryCooperationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
+
+
+% Voluntary position
+\newcommand{\voluntaryPositionE}[6]{\colorbox{green}
+{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
+\newcommand{\voluntaryPositionP}[6]{\colorbox{green}
+{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
+
+\newcommand{\voluntaryPositionC}[8]{\ifthenelse{\value{#8}=0}
+{\expandafter\newcommand\csname voluntaryPosition\arabic{voluntaryPositionindex}\endcsname
+{\csname #8\endcsname\\\iftoggle{EnglishToggle}
+{\voluntaryPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\voluntaryPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}}
+{\expandafter\newcommand\csname voluntaryPosition\arabic{voluntaryPositionindex}\endcsname
+{\iftoggle{EnglishToggle}
+{\voluntaryPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\voluntaryPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}}
+\addtocounter{#8}{1}\addtocounter{voluntaryPositionindex}{1}}
+
+
+% Voluntary
+\newcommand{\voluntaryListC}{\iftoggle{CurriculumVitae}
+{\newcounter{VPjndex}\forloop{VPjndex}{0}{\value{VPjndex} < \value{voluntaryPositionindex}}{\noindent\csname voluntaryPosition\arabic{VPjndex}\endcsname\par}}{}}
+\newcommand{\voluntary}{\iftoggle{EnglishToggle}{\section*{Voluntary}}{}\iftoggle{PersianToggle}{\section*{فعالیت‌های داوطلبانه}}{}\voluntaryListC}
