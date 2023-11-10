@@ -13,6 +13,8 @@ texdoc microtype
 @REM microtype used in .\lib\commonPackages.sty
 texdoc forloop
 @REM forloop used in .\lib\commonPackages.sty
+texdoc ifthen
+@REM ifthen used in .\lib\commonPackages.sty
 texdoc hyperref
 @REM hyperref used in .\lib\commonPackages.sty
 texdoc xcolor

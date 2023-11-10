@@ -138,39 +138,40 @@
 
 
 % Cooperation period
-\newcommand{\cooperationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}
-\expandafter\newcommand\csname #2\arabic{#2}\endcsname{#1}\addtocounter{#2}{1}\workExperienceListC{#2}}
-
-\newcommand{\cooperationPeriodUpdate}[1]{\expandafter\renewcommand\csname #1\endcsname
-{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname\\}}}
+\newcounter{jobPositionindex}\setcounter{jobPositionindex}{0}
+\newcounter{maxjobPositionindex}\setcounter{maxjobPositionindex}{3}
+\newcommand{\cooperationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
 
 
 % Job position
 \newcommand{\jobPositionE}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2\ }
+{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
 \newcommand{\jobPositionP}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2\ }
+{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
 
-\newcommand{\jobPositionC}[8]{\expandafter\newcommand\csname #8\arabic{#8}\endcsname
-{\iftoggle{EnglishToggle}{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}
-\addtocounter{#8}{1}\cooperationPeriodUpdate{#8}}
+\newcommand{\jobPositionC}[8]{\ifthenelse{\value{#8}=0}
+{\expandafter\newcommand\csname jobPosition\arabic{jobPositionindex}\endcsname
+{\csname #8\endcsname\\\iftoggle{EnglishToggle}
+{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}}
+{\expandafter\newcommand\csname jobPosition\arabic{jobPositionindex}\endcsname
+{\iftoggle{EnglishToggle}
+{\jobPositionE{#1}{#2}{#5}{#6}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\jobPositionP{#3}{#4}{#5}{#6}{#7}{#8}}{}}}
+\addtocounter{#8}{1}\addtocounter{jobPositionindex}{1}}
 
 
 % Work Experience
-\newcommand{\workExperienceList}{\iftoggle{EnglishToggle}
-{\iftoggle{CurriculumVitae}{Detail of experiences:}{}\iftoggle{Resume}{Selection of experiences:}{}}{}\iftoggle{PersianToggle}
-{\iftoggle{CurriculumVitae}{مشروح تجربیات:}{}\iftoggle{Resume}{گزیده تجربیات:}{}}{}}
-\newcommand{\workExperienceListC}[1]{\expandafter\let\csname workExperienceListbefore#1\endcsname\workExperienceList
-\renewcommand{\workExperienceList}{\expandafter\csname workExperienceListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}
-\newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceList}
+\newcommand{\workExperienceListC}{\iftoggle{CurriculumVitae}
+{\newcounter{JPjndex}\forloop{JPjndex}{0}{\value{JPjndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPjndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}}
+\newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceListC}
 
 
 % Education period
-\newcommand{\educationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\newcounter{#2i}\newcounter{#2ii}
-\expandafter\newcommand\csname #2\arabic{#2}\endcsname{#1}\addtocounter{#2}{1}\educationListC{#2}}
-
-\newcommand{\educationPeriodUpdate}[1]{\expandafter\renewcommand\csname #1\endcsname
-{\newcounter{#1index}\forloop{#1index}{0}{\value{#1index} < \value{#1}}{\csname #1\arabic{#1index}\endcsname\\}}}
+\newcounter{educationGradeindex}\setcounter{educationGradeindex}{0}
+\newcounter{maxeducationGradeindex}\setcounter{maxeducationGradeindex}{2}
+\newcommand{\educationPeriodC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
 
 
 % Education grade
@@ -182,51 +183,74 @@
 {\bfseries\color{darkgray}\parbox{85mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{75mm}{\raggedright#4}}}\\}
 
 \newcommand{\educationGradeCI}[9]{
-\expandafter\def\csname tempa#9\arabic{#9i}\endcsname{#1}
-\expandafter\def\csname tempb#9\arabic{#9i}\endcsname{#2}
-\expandafter\def\csname tempc#9\arabic{#9i}\endcsname{#3}
-\expandafter\def\csname tempd#9\arabic{#9i}\endcsname{#4}
-\expandafter\def\csname tempe#9\arabic{#9i}\endcsname{#5}
-\expandafter\def\csname tempf#9\arabic{#9i}\endcsname{#6}
-\expandafter\def\csname tempg#9\arabic{#9i}\endcsname{#7}
-\expandafter\def\csname temph#9\arabic{#9i}\endcsname{#8}}
+\expandafter\def\csname tempa\arabic{educationGradeindex}\endcsname{#1}
+\expandafter\def\csname tempb\arabic{educationGradeindex}\endcsname{#2}
+\expandafter\def\csname tempc\arabic{educationGradeindex}\endcsname{#3}
+\expandafter\def\csname tempd\arabic{educationGradeindex}\endcsname{#4}
+\expandafter\def\csname tempe\arabic{educationGradeindex}\endcsname{#5}
+\expandafter\def\csname tempf\arabic{educationGradeindex}\endcsname{#6}
+\expandafter\def\csname tempg\arabic{educationGradeindex}\endcsname{#7}
+\expandafter\def\csname temph\arabic{educationGradeindex}\endcsname{#8}}
 \newcommand{\educationGradeCII}[7]{
-\expandafter\def\csname tempi#7\arabic{#7i}\endcsname{#1}
-\expandafter\def\csname tempj#7\arabic{#7i}\endcsname{#2}
-\expandafter\def\csname tempk#7\arabic{#7i}\endcsname{#3}
-\expandafter\def\csname templ#7\arabic{#7i}\endcsname{#4}
-\expandafter\def\csname tempm#7\arabic{#7i}\endcsname{#5}
-\expandafter\def\csname tempn#7\arabic{#7i}\endcsname{#6}
-\addtocounter{#7i}{1}\educationGradeC{#7}}
-\newcommand{\educationGradeC}[1]{\expandafter\newcommand\csname #1\arabic{#1}\endcsname{\iftoggle{EnglishToggle}{\educationGradeE
-{\csname tempa#1\arabic{#1ii}\endcsname}
-{\csname tempb#1\arabic{#1ii}\endcsname}
-{\csname tempc#1\arabic{#1ii}\endcsname}
-{\csname tempd#1\arabic{#1ii}\endcsname}
-{\csname tempk#1\arabic{#1ii}\endcsname}
-{\csname templ#1\arabic{#1ii}\endcsname}
-{\csname tempm#1\arabic{#1ii}\endcsname}
-{\csname tempn#1\arabic{#1ii}\endcsname}
-{#1}\csname tempi#1\arabic{#1ii}\endcsname\ }{}
+\expandafter\def\csname tempi\arabic{educationGradeindex}\endcsname{#1}
+\expandafter\def\csname tempj\arabic{educationGradeindex}\endcsname{#2}
+\expandafter\def\csname tempk\arabic{educationGradeindex}\endcsname{#3}
+\expandafter\def\csname templ\arabic{educationGradeindex}\endcsname{#4}
+\expandafter\def\csname tempm\arabic{educationGradeindex}\endcsname{#5}
+\expandafter\def\csname tempn\arabic{educationGradeindex}\endcsname{#6}
+\educationGradeC{#7}}
+
+\newcommand{\educationGradeC}[1]{\ifthenelse{\value{#1}=0}
+{\expandafter\newcommand\csname educationGrade\arabic{educationGradeindex}\endcsname[1]
+{\csname #1\endcsname\\\iftoggle{EnglishToggle}{\educationGradeE
+{\csname tempa\arabic{##1}\endcsname}
+{\csname tempb\arabic{##1}\endcsname}
+{\csname tempc\arabic{##1}\endcsname}
+{\csname tempd\arabic{##1}\endcsname}
+{\csname tempk\arabic{##1}\endcsname}
+{\csname templ\arabic{##1}\endcsname}
+{\csname tempm\arabic{##1}\endcsname}
+{\csname tempn\arabic{##1}\endcsname}
+{#1}\csname tempi\arabic{##1}\endcsname}{}
 \iftoggle{PersianToggle}{\educationGradeP
-{\csname tempe#1\arabic{#1ii}\endcsname}
-{\csname tempf#1\arabic{#1ii}\endcsname}
-{\csname tempg#1\arabic{#1ii}\endcsname}
-{\csname temph#1\arabic{#1ii}\endcsname}
-{\csname tempk#1\arabic{#1ii}\endcsname}
-{\csname templ#1\arabic{#1ii}\endcsname}
-{\csname tempm#1\arabic{#1ii}\endcsname}
-{\csname tempn#1\arabic{#1ii}\endcsname}
-{#1}\csname tempj#1\arabic{#1ii}\endcsname\ }{}\addtocounter{#1ii}{1}}\addtocounter{#1}{1}\educationPeriodUpdate{#1}}
+{\csname tempe\arabic{##1}\endcsname}
+{\csname tempf\arabic{##1}\endcsname}
+{\csname tempg\arabic{##1}\endcsname}
+{\csname temph\arabic{##1}\endcsname}
+{\csname tempk\arabic{##1}\endcsname}
+{\csname templ\arabic{##1}\endcsname}
+{\csname tempm\arabic{##1}\endcsname}
+{\csname tempn\arabic{##1}\endcsname}
+{#1}\csname tempj\arabic{##1}\endcsname}{}}}
+{\expandafter\newcommand\csname educationGrade\arabic{educationGradeindex}\endcsname[1]
+{\iftoggle{EnglishToggle}{\educationGradeE
+{\csname tempa\arabic{##1}\endcsname}
+{\csname tempb\arabic{##1}\endcsname}
+{\csname tempc\arabic{##1}\endcsname}
+{\csname tempd\arabic{##1}\endcsname}
+{\csname tempk\arabic{##1}\endcsname}
+{\csname templ\arabic{##1}\endcsname}
+{\csname tempm\arabic{##1}\endcsname}
+{\csname tempn\arabic{##1}\endcsname}
+{#1}\csname tempi\arabic{##1}\endcsname}{}
+\iftoggle{PersianToggle}{\educationGradeP
+{\csname tempe\arabic{##1}\endcsname}
+{\csname tempf\arabic{##1}\endcsname}
+{\csname tempg\arabic{##1}\endcsname}
+{\csname temph\arabic{##1}\endcsname}
+{\csname tempk\arabic{##1}\endcsname}
+{\csname templ\arabic{##1}\endcsname}
+{\csname tempm\arabic{##1}\endcsname}
+{\csname tempn\arabic{##1}\endcsname}
+{#1}\csname tempj\arabic{##1}\endcsname}{}}}
+\addtocounter{#1}{1}\addtocounter{educationGradeindex}{1}}
 
 
 % Education
-\newcommand{\educationList}{\iftoggle{EnglishToggle}
-{\iftoggle{CurriculumVitae}{Detail of education:}{}\iftoggle{Resume}{Selection of education:}{}}{}\iftoggle{PersianToggle}
-{\iftoggle{CurriculumVitae}{شرح تحصیلی:}{}\iftoggle{Resume}{گزیده تحصیلی:}{}}{}}
-\newcommand{\educationListC}[1]{\expandafter\let\csname educationListbefore#1\endcsname\educationList
-\renewcommand{\educationList}{\expandafter\csname educationListbefore#1\endcsname \\ \expandafter\csname #1\endcsname}}
-\newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationList}
+\newcommand{\educationListC}{\iftoggle{CurriculumVitae}
+{\newcounter{EGjndex}\forloop{EGjndex}{0}{\value{EGjndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGjndex}\endcsname{EGjndex}\par}}{}\iftoggle{Resume}
+{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}}
+\newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationListC}
 
 
 % GPA
@@ -241,17 +265,17 @@
 
 \newcommand{\craftE}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
 {\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}\iftoggle{Resume}{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{190mm}{\centering#1}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}}
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}\iftoggle{Resume}{\parbox{190mm}{\colorbox{olive}
+{\bfseries\color{white}\parbox{189mm}{\centering#1}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}}
 \newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
-{\ \bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedright#4}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}\iftoggle{Resume}
+{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}\iftoggle{Resume}
 {\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{190mm}{\centering#1}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}\\}{}}
+{\bfseries\color{white}\parbox{189mm}{\centering#1}}\\
+{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}}
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
-{\noindent\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\csname craft\arabic{craftjndex}\endcsname}}{}\iftoggle{Resume}
-{\noindent\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\csname craft\arabic{craftkndex}\endcsname}}}
+{\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftjndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}}}
 \newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}

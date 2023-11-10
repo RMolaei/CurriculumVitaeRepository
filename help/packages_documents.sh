@@ -13,6 +13,8 @@ texdoc microtype
 # microtype used in .\lib\commonPackages.sty
 texdoc forloop
 # forloop used in .\lib\commonPackages.sty
+texdoc ifthen
+# ifthen used in .\lib\commonPackages.sty
 texdoc hyperref
 # hyperref used in .\lib\commonPackages.sty
 texdoc xcolor
