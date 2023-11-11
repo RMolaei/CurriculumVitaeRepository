@@ -117,16 +117,18 @@
 
 
 % Institute
-\newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}
-{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}}
+\newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
+{\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
-\newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}
-{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}}
+\newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
+{\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
 
-\newcommand{\instituteC}[8]{
+\newcommand{\instituteC}[8]{\newtoggle{#8}
 \expandafter\newcommand\csname #8\endcsname
 {\iftoggle{EnglishToggle}{\instituteE{#1}{#2}{#3}{#7}{#8}}{}\iftoggle{PersianToggle}{\instituteP{#4}{#5}{#6}{#7}{#8}}{}}
 }
@@ -288,9 +290,9 @@
 
 % Voluntary position
 \newcommand{\voluntaryPositionE}[6]{\colorbox{green}
-{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
+{\bfseries\color{darkgray}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
 \newcommand{\voluntaryPositionP}[6]{\colorbox{green}
-{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
+{\bfseries\color{darkgray}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
 
 \newcommand{\voluntaryPositionC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname voluntaryPosition\arabic{voluntaryPositionindex}\endcsname
