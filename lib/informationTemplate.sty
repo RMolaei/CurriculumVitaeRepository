@@ -259,6 +259,30 @@
 \newcommand{\gpa}[2]{\iftoggle{EnglishToggle}{#1/#2}{}\iftoggle{PersianToggle}{$#1$ از $#2$}{}}
 
 
+% Language
+\newcounter{languageindex}\setcounter{languageindex}{0}
+\newcounter{maxlanguageindex}\setcounter{maxlanguageindex}{3}
+\newcommand{\languageC}[9]{\expandafter\newcommand\csname language\arabic{languageindex}\endcsname
+{\iftoggle{EnglishToggle}{\languageE{#1}{#2}{#5}{#6}{#7}{#8}{#9}}{}\iftoggle{PersianToggle}{\languageP{#3}{#4}{#5}{#6}{#7}{#8}{#9}}{}}\addtocounter{languageindex}{1}}
+
+\newcommand{\languageTitle}{\iftoggle{EnglishToggle}
+{\parbox{189mm}{\colorbox{pink}
+{\bfseries\color{darkgray}\parbox{27mm}{Language}\parbox{27mm}{Certification}\parbox{108mm}{\parbox{108mm}{\centering Skill}\\\parbox{108mm}{\parbox{27mm}{\centering Reading}\parbox{27mm}{\centering Writing}\parbox{27mm}{\centering Speaking}\parbox{27mm}{\centering Listening}}}\parbox{27mm}{Grade}}}}
+{}\iftoggle{PersianToggle}{\ \parbox{189mm}{\colorbox{pink}
+{\bfseries\color{darkgray}\parbox{27mm}{\ زبان}\parbox{27mm}{\ مدرک}\parbox{108mm}{\parbox{108mm}{\centering مهارت}\\\parbox{108mm}{\parbox{27mm}{\centering\ خوانشی}\parbox{27mm}{\centering\ نگارشی}\parbox{27mm}{\centering\ گفتاری}\parbox{27mm}{\centering\ شنیداری}}}\parbox{27mm}{\ نمره از کل}}}}{}}
+\newcommand{\languageE}[7]{\iftoggle{CurriculumVitae}
+{\parbox{28mm}{\ #1}\parbox{27mm}{\ #2}\parbox{27mm}{\centering\ #3}\parbox{27mm}{\centering\ #4}\parbox{27mm}{\centering\ #5}\parbox{27mm}{\centering\ #6}\parbox{27mm}{\ #7}}
+{}\iftoggle{Resume}{#1 (#7)}{}}
+\newcommand{\languageP}[7]{\iftoggle{CurriculumVitae}
+{\parbox{28mm}{#1}\parbox{27mm}{#2}\parbox{27mm}{\centering#3}\parbox{27mm}{\centering#4}\parbox{27mm}{\centering#5}\parbox{27mm}{\centering#6}\parbox{27mm}{#7}}
+{}\iftoggle{Resume}{#1 (#7)}{}}
+
+\newcommand{\languagelistC}{\iftoggle{CurriculumVitae}
+{\noindent\languageTitle\par\newcounter{languagejndex}\forloop{languagejndex}{0}{\value{languagejndex} < \value{languageindex}}{\noindent\csname language\arabic{languagejndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{languagekndex}\newcounter{languagelndex}\forloop{languagekndex}{0}{\value{languagekndex} < \value{maxlanguageindex}}{\noindent\csname language\arabic{languagekndex}\endcsname\addtocounter{languagelndex}{1}\ifthenelse{\value{languagelndex}<\value{maxlanguageindex}}{,\ }{}}}{}}
+\newcommand{\languageS}{\iftoggle{EnglishToggle}{\section*{Languages}}{}\iftoggle{PersianToggle}{\section*{زبان‌های خارجی}}{}\languagelistC}
+
+
 % Craft
 \newcounter{craftindex}\setcounter{craftindex}{0}
 \newcounter{maxcraftindex}\setcounter{maxcraftindex}{3}
@@ -279,7 +303,9 @@
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
 {\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}}{}}
+{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}
+\noindent\parbox{190mm}{\colorbox{olive}
+{\bfseries\color{white}\parbox{189mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{زبان}{}}}\\\languagelistC}\par}{}}
 \newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}
 
 
