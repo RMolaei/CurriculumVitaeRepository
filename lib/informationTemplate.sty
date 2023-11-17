@@ -336,3 +336,18 @@
 \newcommand{\voluntaryListC}{\iftoggle{CurriculumVitae}
 {\newcounter{VPjndex}\forloop{VPjndex}{0}{\value{VPjndex} < \value{voluntaryPositionindex}}{\noindent\csname voluntaryPosition\arabic{VPjndex}\endcsname\par}}{}}
 \newcommand{\voluntary}{\iftoggle{EnglishToggle}{\section*{Voluntary}}{}\iftoggle{PersianToggle}{\section*{فعالیت‌های داوطلبانه}}{}\voluntaryListC}
+
+
+% Project
+\newcounter{projectindex}\setcounter{projectindex}{0}
+\newcounter{maxprojectindex}\setcounter{maxprojectindex}{3}
+\newcommand{\projectC}[4]{\expandafter\newcommand\csname project\arabic{projectindex}\endcsname
+{\iftoggle{EnglishToggle}{\projectE{#1}{#2}}{}\iftoggle{PersianToggle}{\projectP{#3}{#4}}{}}\addtocounter{projectindex}{1}}
+
+\newcommand{\projectE}[2]{{\bfseries#1}: #2}
+\newcommand{\projectP}[2]{{\bfseries#1}: #2}
+
+\newcommand{\projectlistC}{\iftoggle{CurriculumVitae}
+{\newcounter{projectjndex}\forloop{projectjndex}{0}{\value{projectjndex} < \value{projectindex}}{\csname project\arabic{projectjndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex}}{\csname project\arabic{projectkndex}\endcsname\par}}{}}
+\newcommand{\project}{\iftoggle{EnglishToggle}{\section*{Projects}}{}\iftoggle{PersianToggle}{\section*{پروژه‌ها}}{}\projectlistC}
