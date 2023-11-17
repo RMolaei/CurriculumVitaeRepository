@@ -166,7 +166,7 @@
 % Work Experience
 \newcommand{\workExperienceListC}{\iftoggle{CurriculumVitae}
 {\newcounter{JPjndex}\forloop{JPjndex}{0}{\value{JPjndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}{}}
+{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex} \and \value{JPkndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}{}}
 \newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceListC}
 
 
@@ -251,7 +251,7 @@
 % Education
 \newcommand{\educationListC}{\iftoggle{CurriculumVitae}
 {\newcounter{EGjndex}\forloop{EGjndex}{0}{\value{EGjndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGjndex}\endcsname{EGjndex}\par}}{}\iftoggle{Resume}
-{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}{}}
+{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex} \and \value{EGkndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}{}}
 \newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationListC}
 
 
@@ -279,7 +279,7 @@
 
 \newcommand{\languagelistC}{\iftoggle{CurriculumVitae}
 {\noindent\languageTitle\par\newcounter{languagejndex}\forloop{languagejndex}{0}{\value{languagejndex} < \value{languageindex}}{\noindent\csname language\arabic{languagejndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{languagekndex}\newcounter{languagelndex}\forloop{languagekndex}{0}{\value{languagekndex} < \value{maxlanguageindex}}{\noindent\csname language\arabic{languagekndex}\endcsname\addtocounter{languagelndex}{1}\ifthenelse{\value{languagelndex}<\value{maxlanguageindex}}{,\ }{}}}{}}
+{\newcounter{languagekndex}\newcounter{languagelndex}\forloop{languagekndex}{0}{\value{languagekndex} < \value{maxlanguageindex} \and \value{languagekndex} < \value{languageindex}}{\noindent\csname language\arabic{languagekndex}\endcsname\addtocounter{languagelndex}{1}\ifthenelse{\value{languagelndex}<\value{maxlanguageindex} \and \value{languagelndex} < \value{languageindex}}{,\ }{}}}{}}
 \newcommand{\languageS}{\iftoggle{EnglishToggle}{\section*{Languages}}{}\iftoggle{PersianToggle}{\section*{زبان‌های خارجی}}{}\languagelistC}
 
 
@@ -303,7 +303,7 @@
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
 {\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}
+{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex} \and \value{craftkndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}
 \noindent\parbox{190mm}{\colorbox{olive}
 {\bfseries\color{white}\parbox{189mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{زبان}{}}}\\\languagelistC}\par}{}}
 \newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}
@@ -349,5 +349,5 @@
 
 \newcommand{\projectlistC}{\iftoggle{CurriculumVitae}
 {\newcounter{projectjndex}\forloop{projectjndex}{0}{\value{projectjndex} < \value{projectindex}}{\csname project\arabic{projectjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex}}{\csname project\arabic{projectkndex}\endcsname\par}}{}}
+{\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex} \and \value{projectkndex} < \value{projectindex}}{\csname project\arabic{projectkndex}\endcsname\par}}{}}
 \newcommand{\project}{\iftoggle{EnglishToggle}{\section*{Projects}}{}\iftoggle{PersianToggle}{\section*{پروژه‌ها}}{}\projectlistC}
