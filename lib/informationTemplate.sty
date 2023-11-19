@@ -351,3 +351,83 @@
 {\newcounter{projectjndex}\forloop{projectjndex}{0}{\value{projectjndex} < \value{projectindex}}{\csname project\arabic{projectjndex}\endcsname\par}}{}\iftoggle{Resume}
 {\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex} \and \value{projectkndex} < \value{projectindex}}{\csname project\arabic{projectkndex}\endcsname\par}}{}}
 \newcommand{\project}{\iftoggle{EnglishToggle}{\section*{Projects}}{}\iftoggle{PersianToggle}{\section*{پروژه‌ها}}{}\projectlistC}
+
+
+% Professional training institute
+\newcounter{PTindex}\setcounter{PTindex}{0}
+\newcounter{maxPTindex}\setcounter{maxPTindex}{3}
+\newcommand{\professionalTrainingInstituteC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
+
+
+% Professional training
+\newcommand{\professionalTrainingE}[8]{\parbox{190mm}{\colorbox{lime}
+{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 to #5}}\\
+{\bfseries\color{darkgray}\ \parbox{85mm}{Lecturer: #2}\parbox{29mm}{\centering Score: #6}\parbox{75mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
+{\\#7}{}}
+\newcommand{\professionalTrainingP}[8]{\parbox{190mm}{\colorbox{lime}
+{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 الی #5}}\\
+{\bfseries\color{darkgray}\parbox{85mm}{مدرس: #2}\parbox{29mm}{\centering نمره: #6}\parbox{75mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
+{\\#7}{}}
+
+\newcommand{\professionalTrainingCI}[9]{
+\expandafter\def\csname tempPTa\arabic{PTindex}\endcsname{#1}
+\expandafter\def\csname tempPTb\arabic{PTindex}\endcsname{#2}
+\expandafter\def\csname tempPTc\arabic{PTindex}\endcsname{#3}
+\expandafter\def\csname tempPTd\arabic{PTindex}\endcsname{#4}
+\expandafter\def\csname tempPTe\arabic{PTindex}\endcsname{#5}
+\expandafter\def\csname tempPTf\arabic{PTindex}\endcsname{#6}
+\expandafter\def\csname tempPTg\arabic{PTindex}\endcsname{#7}
+\expandafter\def\csname tempPTh\arabic{PTindex}\endcsname{#8}}
+\newcommand{\professionalTrainingCII}[4]{
+\expandafter\def\csname tempPTi\arabic{PTindex}\endcsname{#1}
+\expandafter\def\csname tempPTj\arabic{PTindex}\endcsname{#2}
+\expandafter\def\csname tempPTk\arabic{PTindex}\endcsname{#3}
+\professionalTrainingC{#4}}
+
+\newcommand{\professionalTrainingC}[1]{\ifthenelse{\value{#1}=0}
+{\expandafter\newcommand\csname professionalTraining\arabic{PTindex}\endcsname[1]
+{\csname #1\endcsname\\\iftoggle{EnglishToggle}{\professionalTrainingE
+{\csname tempPTa\arabic{##1}\endcsname}
+{\csname tempPTb\arabic{##1}\endcsname}
+{\csname tempPTc\arabic{##1}\endcsname}
+{\csname tempPTi\arabic{##1}\endcsname}
+{\csname tempPTj\arabic{##1}\endcsname}
+{\csname tempPTk\arabic{##1}\endcsname}
+{\csname tempPTd\arabic{##1}\endcsname}
+{#1}}{}
+\iftoggle{PersianToggle}{\professionalTrainingP
+{\csname tempPTe\arabic{##1}\endcsname}
+{\csname tempPTf\arabic{##1}\endcsname}
+{\csname tempPTg\arabic{##1}\endcsname}
+{\csname tempPTi\arabic{##1}\endcsname}
+{\csname tempPTj\arabic{##1}\endcsname}
+{\csname tempPTk\arabic{##1}\endcsname}
+{\csname tempPTh\arabic{##1}\endcsname}
+{#1}}{}}}
+{\expandafter\newcommand\csname professionalTraining\arabic{PTindex}\endcsname[1]
+{\iftoggle{EnglishToggle}{\professionalTrainingE
+{\csname tempPTa\arabic{##1}\endcsname}
+{\csname tempPTb\arabic{##1}\endcsname}
+{\csname tempPTc\arabic{##1}\endcsname}
+{\csname tempPTi\arabic{##1}\endcsname}
+{\csname tempPTj\arabic{##1}\endcsname}
+{\csname tempPTk\arabic{##1}\endcsname}
+{\csname tempPTd\arabic{##1}\endcsname}
+{#1}}{}
+\iftoggle{PersianToggle}{\professionalTrainingP
+{\csname tempPTe\arabic{##1}\endcsname}
+{\csname tempPTf\arabic{##1}\endcsname}
+{\csname tempPTg\arabic{##1}\endcsname}
+{\csname tempPTi\arabic{##1}\endcsname}
+{\csname tempPTj\arabic{##1}\endcsname}
+{\csname tempPTk\arabic{##1}\endcsname}
+{\csname tempPTh\arabic{##1}\endcsname}
+{#1}}{}}}
+\addtocounter{#1}{1}\addtocounter{PTindex}{1}}
+
+
+% Training
+\newcommand{\professionalTrainingListC}{\iftoggle{CurriculumVitae}
+{\newcounter{PTIjndex}\forloop{PTIjndex}{0}{\value{PTIjndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIjndex}\endcsname{PTIjndex}\par}}{}\iftoggle{Resume}
+{\newcounter{PTIkndex}\forloop{PTIkndex}{0}{\value{PTIkndex} < \value{maxPTindex} \and \value{PTIkndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIkndex}\endcsname{PTIkndex}\par}}{}}
+\newcommand{\training}{\iftoggle{EnglishToggle}{\section*{Professional Training}}{}\iftoggle{PersianToggle}{\section*{آموزش‌های حرفه‌ای}}{}\professionalTrainingListC}
