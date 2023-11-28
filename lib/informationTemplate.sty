@@ -431,3 +431,29 @@
 {\newcounter{PTIjndex}\forloop{PTIjndex}{0}{\value{PTIjndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIjndex}\endcsname{PTIjndex}\par}}{}\iftoggle{Resume}
 {\newcounter{PTIkndex}\forloop{PTIkndex}{0}{\value{PTIkndex} < \value{maxPTindex} \and \value{PTIkndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIkndex}\endcsname{PTIkndex}\par}}{}}
 \newcommand{\training}{\iftoggle{EnglishToggle}{\section*{Professional Training}}{}\iftoggle{PersianToggle}{\section*{آموزش‌های حرفه‌ای}}{}\professionalTrainingListC}
+
+
+% Top Publication
+\newcounter{toppubindex}\setcounter{toppubindex}{0}
+\newcommand{\topPublication}[1]{\expandafter\newcommand\csname toppub\arabic{toppubindex}\endcsname
+{\nocite{#1}}\addtocounter{toppubindex}{1}}
+
+\newcommand{\topPubList}
+{\newcounter{TPjndex}\forloop{TPjndex}{0}{\value{TPjndex} < \value{toppubindex}}{\csname toppub\arabic{TPjndex}\endcsname}}
+
+% Publication
+\newcommand{\publicationsetting}{
+\makeatletter
+\renewcommand\@biblabel[1]{\textbullet}
+\makeatother
+\iftoggle{EnglishToggle}{
+\renewcommand{\refname}{Research and Publication}
+\bibliographystyle{ieeetr}
+}{}
+\iftoggle{PersianToggle}{
+\renewcommand{\refname}{سوابق پژوهشی و نشریات}
+\bibliographystyle{ieeetr-fa}
+}{}
+}
+
+\newcommand{\publication}{\iftoggle{CurriculumVitae}{\nocite{*}}{}\iftoggle{Resume}{\topPubList}{}\bibliography{\jobname.bib}}

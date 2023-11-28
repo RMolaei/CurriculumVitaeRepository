@@ -5,3 +5,7 @@
 *.gz
 *.pdf
 *.OUT
+*.bib
+*.bbl
+*.blg
+*.xdv

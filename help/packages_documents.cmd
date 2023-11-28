@@ -23,9 +23,13 @@ texdoc enumitem
 @REM enumitem used in .\lib\commonPackages.sty
 texdoc indentfirst
 @REM indentfirst used in .\lib\commonPackages.sty
+texdoc filecontents
+@REM filecontents used in .\lib\commonPackages.sty
 texdoc geometry
 @REM geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr
 @REM fancyhdr used in .\lib\pagelayout.sty
 texdoc lastpage
 @REM lastpage used in .\lib\pagelayout.sty
+texdoc latexmk
+@REM latexmk used in cmd files

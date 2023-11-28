@@ -1,0 +1,1 @@
+latexmk -xelatex CV_English.tex
