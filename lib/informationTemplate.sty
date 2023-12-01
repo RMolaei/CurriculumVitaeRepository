@@ -457,3 +457,83 @@
 }
 
 \newcommand{\publication}{\iftoggle{CurriculumVitae}{\nocite{*}}{}\iftoggle{Resume}{\topPubList}{}\bibliography{\jobname.bib}}
+
+
+% Educational and teaching experience institute
+\newcounter{ETEindex}\setcounter{ETEindex}{0}
+\newcounter{maxETEindex}\setcounter{maxETEindex}{3}
+\newcommand{\teachingInstituteC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
+
+
+% Educational and teaching experience
+\newcommand{\teachingE}[8]{\parbox{190mm}{\colorbox{purple}
+{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 to #5}}\\
+{\bfseries\color{darkgray}\ \parbox{72mm}{Total course(s) duration: #2}\parbox{55mm}{\centering Total number of students: #6}\parbox{62mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
+{\\#7}{}}
+\newcommand{\teachingP}[8]{\parbox{190mm}{\colorbox{purple}
+{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 الی #5}}\\
+{\bfseries\color{darkgray}\parbox{81mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{71mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
+{\\#7}{}}
+
+\newcommand{\teachingCI}[9]{
+\expandafter\def\csname tempETEa\arabic{ETEindex}\endcsname{#1}
+\expandafter\def\csname tempETEb\arabic{ETEindex}\endcsname{#2}
+\expandafter\def\csname tempETEc\arabic{ETEindex}\endcsname{#3}
+\expandafter\def\csname tempETEd\arabic{ETEindex}\endcsname{#4}
+\expandafter\def\csname tempETEe\arabic{ETEindex}\endcsname{#5}
+\expandafter\def\csname tempETEf\arabic{ETEindex}\endcsname{#6}
+\expandafter\def\csname tempETEg\arabic{ETEindex}\endcsname{#7}
+\expandafter\def\csname tempETEh\arabic{ETEindex}\endcsname{#8}}
+\newcommand{\teachingCII}[4]{
+\expandafter\def\csname tempETEi\arabic{ETEindex}\endcsname{#1}
+\expandafter\def\csname tempETEj\arabic{ETEindex}\endcsname{#2}
+\expandafter\def\csname tempETEk\arabic{ETEindex}\endcsname{#3}
+\teachingC{#4}}
+
+\newcommand{\teachingC}[1]{\ifthenelse{\value{#1}=0}
+{\expandafter\newcommand\csname teaching\arabic{ETEindex}\endcsname[1]
+{\csname #1\endcsname\\\iftoggle{EnglishToggle}{\teachingE
+{\csname tempETEa\arabic{##1}\endcsname}
+{\csname tempETEb\arabic{##1}\endcsname}
+{\csname tempETEc\arabic{##1}\endcsname}
+{\csname tempETEi\arabic{##1}\endcsname}
+{\csname tempETEj\arabic{##1}\endcsname}
+{\csname tempETEk\arabic{##1}\endcsname}
+{\csname tempETEd\arabic{##1}\endcsname}
+{#1}}{}
+\iftoggle{PersianToggle}{\teachingP
+{\csname tempETEe\arabic{##1}\endcsname}
+{\csname tempETEf\arabic{##1}\endcsname}
+{\csname tempETEg\arabic{##1}\endcsname}
+{\csname tempETEi\arabic{##1}\endcsname}
+{\csname tempETEj\arabic{##1}\endcsname}
+{\csname tempETEk\arabic{##1}\endcsname}
+{\csname tempETEh\arabic{##1}\endcsname}
+{#1}}{}}}
+{\expandafter\newcommand\csname teaching\arabic{ETEindex}\endcsname[1]
+{\iftoggle{EnglishToggle}{\teachingE
+{\csname tempETEa\arabic{##1}\endcsname}
+{\csname tempETEb\arabic{##1}\endcsname}
+{\csname tempETEc\arabic{##1}\endcsname}
+{\csname tempETEi\arabic{##1}\endcsname}
+{\csname tempETEj\arabic{##1}\endcsname}
+{\csname tempETEk\arabic{##1}\endcsname}
+{\csname tempETEd\arabic{##1}\endcsname}
+{#1}}{}
+\iftoggle{PersianToggle}{\teachingP
+{\csname tempETEe\arabic{##1}\endcsname}
+{\csname tempETEf\arabic{##1}\endcsname}
+{\csname tempETEg\arabic{##1}\endcsname}
+{\csname tempETEi\arabic{##1}\endcsname}
+{\csname tempETEj\arabic{##1}\endcsname}
+{\csname tempETEk\arabic{##1}\endcsname}
+{\csname tempETEh\arabic{##1}\endcsname}
+{#1}}{}}}
+\addtocounter{#1}{1}\addtocounter{ETEindex}{1}}
+
+
+% Teaching
+\newcommand{\teachingListC}{\iftoggle{CurriculumVitae}
+{\newcounter{ETEjndex}\forloop{ETEjndex}{0}{\value{ETEjndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEjndex}\endcsname{ETEjndex}\par}}{}\iftoggle{Resume}
+{\newcounter{ETEkndex}\forloop{ETEkndex}{0}{\value{ETEkndex} < \value{maxETEindex} \and \value{ETEkndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEkndex}\endcsname{ETEkndex}\par}}{}}
+\newcommand{\teaching}{\iftoggle{EnglishToggle}{\section*{Educational and Teaching Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق آموزشی و تدریس}}{}\teachingListC}
