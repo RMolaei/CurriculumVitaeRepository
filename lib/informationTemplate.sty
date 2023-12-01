@@ -537,3 +537,38 @@
 {\newcounter{ETEjndex}\forloop{ETEjndex}{0}{\value{ETEjndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEjndex}\endcsname{ETEjndex}\par}}{}\iftoggle{Resume}
 {\newcounter{ETEkndex}\forloop{ETEkndex}{0}{\value{ETEkndex} < \value{maxETEindex} \and \value{ETEkndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEkndex}\endcsname{ETEkndex}\par}}{}}
 \newcommand{\teaching}{\iftoggle{EnglishToggle}{\section*{Educational and Teaching Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق آموزشی و تدریس}}{}\teachingListC}
+
+
+% Licenses and Certifications Granting Institution
+\newcounter{LCindex}\setcounter{LCindex}{0}
+\newcounter{maxLCindex}\setcounter{maxLCindex}{3}
+\newcommand{\licensesCertificationsGrantingInstitutionC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
+
+
+% Licenses and Certifications title
+\newcommand{\LicensesCertificationsTitleE}[6]{\parbox{190mm}{\colorbox{yellow}
+{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Expiry Date: #5}}\\
+{\bfseries\color{darkgray}\ \parbox{114mm}{#2}\parbox{75mm}{\raggedleft Issue Date: #4}}}\iftoggle{CurriculumVitae}
+{\\#3}{}}
+\newcommand{\LicensesCertificationsTitleP}[6]{\parbox{190mm}{\colorbox{yellow}
+{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright تاریخ انقضا: #5}}\\
+{\bfseries\color{darkgray}\parbox{114mm}{#2}\parbox{75mm}{\raggedright تاریخ صدور: #4}}}\iftoggle{CurriculumVitae}
+{\\#3}{}}
+
+\newcommand{\LicensesCertificationsTitleC}[9]{\ifthenelse{\value{#9}=0}
+{\expandafter\newcommand\csname LicensesCertificationsTitle\arabic{LCindex}\endcsname
+{\csname #9\endcsname\\\iftoggle{EnglishToggle}
+{\LicensesCertificationsTitleE{#1}{#2}{#3}{#7}{#8}{#9}}{}\iftoggle{PersianToggle}
+{\LicensesCertificationsTitleP{#4}{#5}{#6}{#7}{#8}{#9}}{}}}
+{\expandafter\newcommand\csname LicensesCertificationsTitle\arabic{LCindex}\endcsname
+{\iftoggle{EnglishToggle}
+{\LicensesCertificationsTitleE{#1}{#2}{#3}{#7}{#8}{#9}}{}\iftoggle{PersianToggle}
+{\LicensesCertificationsTitleP{#4}{#5}{#6}{#7}{#8}{#9}}{}}}
+\addtocounter{#9}{1}\addtocounter{LCindex}{1}}
+
+
+% Licenses and Certifications
+\newcommand{\LicensesCertificationsListC}{\iftoggle{CurriculumVitae}
+{\newcounter{LCjndex}\forloop{LCjndex}{0}{\value{LCjndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCjndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{LCkndex}\forloop{LCkndex}{0}{\value{LCkndex} < \value{maxLCindex} \and \value{LCkndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCkndex}\endcsname\par}}{}}
+\newcommand{\LicensesCertifications}{\iftoggle{EnglishToggle}{\section*{Licenses and Certifications}}{}\iftoggle{PersianToggle}{\section*{گواهینامه‌ها و مجوزها}}{}\LicensesCertificationsListC}
