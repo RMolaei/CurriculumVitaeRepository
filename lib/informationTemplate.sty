@@ -572,3 +572,38 @@
 {\newcounter{LCjndex}\forloop{LCjndex}{0}{\value{LCjndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCjndex}\endcsname\par}}{}\iftoggle{Resume}
 {\newcounter{LCkndex}\forloop{LCkndex}{0}{\value{LCkndex} < \value{maxLCindex} \and \value{LCkndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCkndex}\endcsname\par}}{}}
 \newcommand{\LicensesCertifications}{\iftoggle{EnglishToggle}{\section*{Licenses and Certifications}}{}\iftoggle{PersianToggle}{\section*{گواهینامه‌ها و مجوزها}}{}\LicensesCertificationsListC}
+
+
+% Honors and Awards Granting Institution
+\newcounter{HAindex}\setcounter{HAindex}{0}
+\newcounter{maxHAindex}\setcounter{maxHAindex}{3}
+\newcommand{\honorsAwardsGrantingInstitutionC}[2]{\expandafter\newcommand\csname #2\endcsname{#1}\newcounter{#2}\setcounter{#2}{0}}
+
+
+% Honors and Awards title
+\newcommand{\honorsAwardsTitleE}[5]{\parbox{190mm}{\colorbox{orange}
+{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Date of Granting: #4}}\\
+{\bfseries\color{darkgray}\ \parbox{190mm}{Approved by #2}}}\iftoggle{CurriculumVitae}
+{\\#3}{}}
+\newcommand{\honorsAwardsTitleP}[5]{\parbox{190mm}{\colorbox{orange}
+{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright تاریخ اهدا: #4}}\\
+{\bfseries\color{darkgray}\parbox{114mm}{به تایید #2}}}\iftoggle{CurriculumVitae}
+{\\#3}{}}
+
+\newcommand{\honorsAwardsTitleC}[8]{\ifthenelse{\value{#8}=0}
+{\expandafter\newcommand\csname honorsAwardsTitle\arabic{HAindex}\endcsname
+{\csname #8\endcsname\\\iftoggle{EnglishToggle}
+{\honorsAwardsTitleE{#1}{#2}{#3}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\honorsAwardsTitleP{#4}{#5}{#6}{#7}{#8}}{}}}
+{\expandafter\newcommand\csname honorsAwardsTitle\arabic{HAindex}\endcsname
+{\iftoggle{EnglishToggle}
+{\honorsAwardsTitleE{#1}{#2}{#3}{#7}{#8}}{}\iftoggle{PersianToggle}
+{\honorsAwardsTitleP{#4}{#5}{#6}{#7}{#8}}{}}}
+\addtocounter{#8}{1}\addtocounter{HAindex}{1}}
+
+
+% Honors and Awards
+\newcommand{\honorsAwardsListC}{\iftoggle{CurriculumVitae}
+{\newcounter{HAjndex}\forloop{HAjndex}{0}{\value{HAjndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAjndex}\endcsname\par}}{}\iftoggle{Resume}
+{\newcounter{HAkndex}\forloop{HAkndex}{0}{\value{HAkndex} < \value{maxHAindex} \and \value{HAkndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAkndex}\endcsname\par}}{}}
+\newcommand{\honorsAwards}{\iftoggle{EnglishToggle}{\section*{Honors and Awards}}{}\iftoggle{PersianToggle}{\section*{افتخارات و جوایز}}{}\honorsAwardsListC}
