@@ -1,3 +1,8 @@
+cd ./CL/
+latexmk -C
+rm ./CL.bib -f
+rm ./CL.bbl -f
+cd ..
 cd ./CV/
 latexmk -C
 rm ./CV_English.bib -f

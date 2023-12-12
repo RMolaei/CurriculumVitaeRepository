@@ -1,3 +1,8 @@
+cd .\CL\
+latexmk -C
+del .\CL.bib
+del .\CL.bbl
+cd ..
 cd .\CV\
 latexmk -C
 del .\CV_English.bib

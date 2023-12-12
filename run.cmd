@@ -1,3 +1,6 @@
+cd .\CL\
+latexmk -xelatex CL.tex
+cd ..
 cd .\CV\
 latexmk -xelatex CV_English.tex
 latexmk -xelatex CV_Persian.tex
