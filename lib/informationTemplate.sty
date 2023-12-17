@@ -119,12 +119,12 @@
 % Institute
 \newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
 {\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}\toggletrue{#5}}}
+{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
 \newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
 {\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3, \url{#4}}\toggletrue{#5}}}
+{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
 
@@ -290,7 +290,7 @@
 {\iftoggle{EnglishToggle}{\craftE{#1}{#2}{#3}{#7}}{}\iftoggle{PersianToggle}{\craftP{#4}{#5}{#6}{#7}}{}}\addtocounter{craftindex}{1}}
 
 \newcommand{\craftE}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4}}\\
+{\bfseries\color{white}\parbox{119mm}{#1}\parbox{70mm}{\raggedleft#4}}\\
 {\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}\iftoggle{Resume}{\parbox{190mm}{\colorbox{olive}
 {\bfseries\color{white}\parbox{189mm}{\centering#1}}\\
 {\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}}
@@ -587,7 +587,7 @@
 {\\#3}{}}
 \newcommand{\honorsAwardsTitleP}[5]{\parbox{190mm}{\colorbox{orange}
 {\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright تاریخ اهدا: #4}}\\
-{\bfseries\color{darkgray}\parbox{114mm}{به تایید #2}}}\iftoggle{CurriculumVitae}
+{\bfseries\color{darkgray}\parbox{114mm}{به تأیید #2}}}\iftoggle{CurriculumVitae}
 {\\#3}{}}
 
 \newcommand{\honorsAwardsTitleC}[8]{\ifthenelse{\value{#8}=0}
