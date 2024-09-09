@@ -54,11 +54,11 @@
 {}\iftoggle{PersianToggle}
 {\iftoggle{CurriculumVitae}{#3 #2\xspace}{}\iftoggle{Resume}{#3\xspace}{}}{}}}
 
-% Marital StateCE
-\newcommand{\maritalStateCE}[1]{\newcommand{\maritalStateE}{#1\xspace}}
-\newcommand{\maritalStateCP}[1]{\newcommand{\maritalStateP}{#1\xspace}}
+% Marital StatusCE
+\newcommand{\maritalStatusCE}[1]{\newcommand{\maritalStatusE}{#1\xspace}}
+\newcommand{\maritalStatusCP}[1]{\newcommand{\maritalStatusP}{#1\xspace}}
 
-\newcommand{\maritalState}{\iftoggle{EnglishToggle}{\maritalStateE}{}\iftoggle{PersianToggle}{\maritalStateP}{}}
+\newcommand{\maritalStatus}{\iftoggle{EnglishToggle}{\maritalStatusE}{}\iftoggle{PersianToggle}{\maritalStatusP}{}}
 
 % Military service
 \newcommand{\militaryServiceCE}[1]{\newcommand{\militaryServiceE}{#1\xspace}}

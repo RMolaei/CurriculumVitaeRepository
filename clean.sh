@@ -17,3 +17,6 @@ rm ./Resume_English.bbl -f
 rm ./Resume_Persian.bib -f
 rm ./Resume_Persian.bbl -f
 cd ..
+cd ./Results/
+rm ./*.pdf -f
+cd ..

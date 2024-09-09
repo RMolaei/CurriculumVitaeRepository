@@ -17,3 +17,6 @@ del .\Resume_English.bbl
 del .\Resume_Persian.bib
 del .\Resume_Persian.bbl
 cd ..
+cd .\Results\
+del .\*.pdf
+cd ..
