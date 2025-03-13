@@ -107,8 +107,8 @@
 
 
 % Acronym
-\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3} (#2)\xspace}}
-\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3} (#2)\xspace}}
+\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3}\AtBeginEnvironment{itemize}{\toggletrue{#3}} (#2)\xspace}}
+\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{#1\acronymlistC{#1}{#2}{#3}\toggletrue{#3}\AtBeginEnvironment{itemize}{\toggletrue{#3}} (#2)\xspace}}
 
 \newcommand{\acronymC}[5]{\expandafter\newcommand\csname #5\endcsname
 {\iftoggle{EnglishToggle}{\acronymE{#1}{#2}{#5}}{}\iftoggle{PersianToggle}{\acronymP{#3}{#4}{#5}}{}}
