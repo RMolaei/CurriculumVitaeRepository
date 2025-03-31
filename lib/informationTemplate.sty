@@ -461,11 +461,11 @@
 \renewcommand\@biblabel[1]{\textbullet}
 \makeatother
 \iftoggle{EnglishToggle}{
-\renewcommand{\refname}{Research and Publication}
+\addto\captionsbritish{\renewcommand{\refname}{Research and Publication}}
 \bibliographystyle{ieeetr}
 }{}
 \iftoggle{PersianToggle}{
-\renewcommand{\refname}{سوابق پژوهشی و نشریات}
+\AtBeginDocument{\renewcommand{\refname}{سوابق پژوهشی و نشریات}}
 \bibliographystyle{ieeetr-fa}
 }{}
 }
