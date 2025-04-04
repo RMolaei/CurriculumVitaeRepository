@@ -596,7 +596,7 @@
 
 % Honors and Awards title
 \newcommand{\honorsAwardsTitleE}[5]{\parbox{190mm}{\colorbox{orange}
-{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Date of Granting: #4}}\\
+{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Awarded: #4}}\\
 {\bfseries\color{darkgray}\ \parbox{190mm}{Approved by #2}}}\iftoggle{CurriculumVitae}
 {\\#3}{}}
 \newcommand{\honorsAwardsTitleP}[5]{\parbox{190mm}{\colorbox{orange}
@@ -620,4 +620,4 @@
 \newcommand{\honorsAwardsListC}{\iftoggle{CurriculumVitae}
 {\newcounter{HAjndex}\forloop{HAjndex}{0}{\value{HAjndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAjndex}\endcsname\par}}{}\iftoggle{Resume}
 {\newcounter{HAkndex}\forloop{HAkndex}{0}{\value{HAkndex} < \value{maxHAindex} \and \value{HAkndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAkndex}\endcsname\par}}{}}
-\newcommand{\honorsAwards}{\iftoggle{EnglishToggle}{\section*{Honors and Awards}}{}\iftoggle{PersianToggle}{\section*{افتخارات و جوایز}}{}\honorsAwardsListC}
+\newcommand{\honorsAwards}{\iftoggle{EnglishToggle}{\section*{Honours and Awards}}{}\iftoggle{PersianToggle}{\section*{افتخارات و جوایز}}{}\honorsAwardsListC}
