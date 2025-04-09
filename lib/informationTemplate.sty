@@ -150,9 +150,9 @@
 
 % Job position
 \newcommand{\jobPositionE}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
+{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 – #5}}\\#2}
 \newcommand{\jobPositionP}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
+{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 - #5}}\\#2}
 
 \newcommand{\jobPositionC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname jobPosition\arabic{jobPositionindex}\endcsname
@@ -181,10 +181,10 @@
 
 % Education grade
 \newcommand{\educationGradeE}[9]{\parbox{190mm}{\colorbox{brown}
-{\bfseries\color{white}\parbox{85mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedleft#6 to #7}}\\
+{\bfseries\color{white}\parbox{85mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedleft#6 – #7}}\\
 {\bfseries\color{darkgray}\ \parbox{85mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{75mm}{\raggedleft#4}}}\\}
 \newcommand{\educationGradeP}[9]{\parbox{190mm}{\colorbox{brown}
-{\bfseries\color{white}\parbox{85mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedright#6 الی #7}}\\
+{\bfseries\color{white}\parbox{85mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedright#6 - #7}}\\
 {\bfseries\color{darkgray}\parbox{85mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{75mm}{\raggedright#4}}}\\}
 
 \newcommand{\educationGradeCI}[9]{
@@ -330,9 +330,9 @@
 
 % Voluntary position
 \newcommand{\voluntaryPositionE}[6]{\colorbox{green}
-{\bfseries\color{darkgray}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 to #5}}\\#2}
+{\bfseries\color{darkgray}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 – #5}}\\#2}
 \newcommand{\voluntaryPositionP}[6]{\colorbox{green}
-{\bfseries\color{darkgray}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 الی #5}}\\#2}
+{\bfseries\color{darkgray}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 - #5}}\\#2}
 
 \newcommand{\voluntaryPositionC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname voluntaryPosition\arabic{voluntaryPositionindex}\endcsname
@@ -375,11 +375,11 @@
 
 % Professional training
 \newcommand{\professionalTrainingE}[8]{\parbox{190mm}{\colorbox{lime}
-{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 to #5}}\\
+{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 – #5}}\\
 {\bfseries\color{darkgray}\ \parbox{85mm}{Duration: #2}\parbox{29mm}{\centering Score: #6}\parbox{75mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
 {\\#7}{}}
 \newcommand{\professionalTrainingP}[8]{\parbox{190mm}{\colorbox{lime}
-{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 الی #5}}\\
+{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 - #5}}\\
 {\bfseries\color{darkgray}\parbox{85mm}{مدت زمان دوره: #2}\parbox{29mm}{\centering نمره: #6}\parbox{75mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
 {\\#7}{}}
 
@@ -481,11 +481,11 @@
 
 % Educational and teaching experience
 \newcommand{\teachingE}[8]{\parbox{190mm}{\colorbox{purple}
-{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 to #5}}\\
+{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 – #5}}\\
 {\bfseries\color{darkgray}\ \parbox{72mm}{Total courses duration: #2}\parbox{55mm}{\centering Total students taught: #6}\parbox{62mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
 {\\#7}{}}
 \newcommand{\teachingP}[8]{\parbox{190mm}{\colorbox{purple}
-{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 الی #5}}\\
+{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 - #5}}\\
 {\bfseries\color{darkgray}\parbox{81mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{71mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
 {\\#7}{}}
 
