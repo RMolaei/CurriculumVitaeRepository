@@ -121,15 +121,16 @@
 
 % Institute
 \newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
-{\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{45mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{154mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{47mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
-{\parbox{150mm}{\raggedright\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
+{\parbox{154mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
+
 \newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
-{\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{45mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\parbox{142mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{154mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{47mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
-{\parbox{150mm}{\raggedleft\Large\bfseries\color{blue}#1}\quad\quad\parbox{34mm}{\centering#3\\\url{#4}}}{}}
+{\parbox{154mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
 
 \newcommand{\instituteC}[8]{\newtoggle{#8}
 \expandafter\newcommand\csname #8\endcsname
@@ -149,10 +150,16 @@
 
 
 % Job position
-\newcommand{\jobPositionE}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 – #5}}\\#2}
-\newcommand{\jobPositionP}[6]{\colorbox{gray}
-{\bfseries\color{white}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 - #5}}\\#2}
+\newcommand{\jobPositionE}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray
+]\bfseries\color{white}\parbox{84mm}{#1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedleft#4 – #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray!10
+]#2\end{tcolorbox}}
+\newcommand{\jobPositionP}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray
+]\bfseries\color{white}\parbox{84mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray!10
+]#2\end{tcolorbox}}
 
 \newcommand{\jobPositionC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname jobPosition\arabic{jobPositionindex}\endcsname
@@ -168,8 +175,8 @@
 
 % Work Experience
 \newcommand{\workExperienceListC}{\iftoggle{CurriculumVitae}
-{\newcounter{JPjndex}\forloop{JPjndex}{0}{\value{JPjndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex} \and \value{JPkndex} < \value{jobPositionindex}}{\noindent\csname jobPosition\arabic{JPkndex}\endcsname\par}}{}}
+{\newcounter{JPjndex}\forloop{JPjndex}{0}{\value{JPjndex} < \value{jobPositionindex}}{\csname jobPosition\arabic{JPjndex}\endcsname}}{}\iftoggle{Resume}
+{\newcounter{JPkndex}\forloop{JPkndex}{0}{\value{JPkndex} < \value{maxjobPositionindex} \and \value{JPkndex} < \value{jobPositionindex}}{\csname jobPosition\arabic{JPkndex}\endcsname}}{}}
 \newcommand{\workExperience}{\iftoggle{EnglishToggle}{\section*{Work Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق کاری}}{}\workExperienceListC}
 
 
@@ -180,12 +187,16 @@
 
 
 % Education grade
-\newcommand{\educationGradeE}[9]{\parbox{190mm}{\colorbox{brown}
-{\bfseries\color{white}\parbox{85mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedleft#6 – #7}}\\
-{\bfseries\color{darkgray}\ \parbox{85mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{75mm}{\raggedleft#4}}}\\}
-\newcommand{\educationGradeP}[9]{\parbox{190mm}{\colorbox{brown}
-{\bfseries\color{white}\parbox{85mm}{\ #1 #2}\parbox{29mm}{\centering#5}\parbox{75mm}{\raggedright#6 - #7}}\\
-{\bfseries\color{darkgray}\parbox{85mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{75mm}{\raggedright#4}}}\\}
+\newcommand{\educationGradeE}[9]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown
+]\bfseries\color{white}\parbox{84mm}{#1 in #2}\parbox{29mm}{\centering#5}\parbox{74.9mm}{\raggedleft#6 – #7}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown!16
+]\bfseries\color{darkgray}\parbox{84mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{74.9mm}{\raggedleft#4}\end{tcolorbox}}
+\newcommand{\educationGradeP}[9]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown
+]\bfseries\color{white}\parbox{84mm}{#1 #2}\parbox{29mm}{\centering#5}\parbox{74.9mm}{\raggedright#6 - #7}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown!16
+]\bfseries\color{darkgray}\parbox{84mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{74.9mm}{\raggedright#4}\end{tcolorbox}}
 
 \newcommand{\educationGradeCI}[9]{
 \expandafter\def\csname tempa\arabic{educationGradeindex}\endcsname{#1}
@@ -216,7 +227,9 @@
 {\csname templ\arabic{##1}\endcsname}
 {\csname tempm\arabic{##1}\endcsname}
 {\csname tempn\arabic{##1}\endcsname}
-{#1}\csname tempi\arabic{##1}\endcsname}{}
+{#1}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown!10
+]\csname tempi\arabic{##1}\endcsname\end{tcolorbox}}{}
 \iftoggle{PersianToggle}{\educationGradeP
 {\csname tempe\arabic{##1}\endcsname}
 {\csname tempf\arabic{##1}\endcsname}
@@ -226,7 +239,9 @@
 {\csname templ\arabic{##1}\endcsname}
 {\csname tempm\arabic{##1}\endcsname}
 {\csname tempn\arabic{##1}\endcsname}
-{#1}\csname tempj\arabic{##1}\endcsname}{}}}
+{#1}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown!10
+]\csname tempj\arabic{##1}\endcsname\end{tcolorbox}}{}}}
 {\expandafter\newcommand\csname educationGrade\arabic{educationGradeindex}\endcsname[1]
 {\iftoggle{EnglishToggle}{\educationGradeE
 {\csname tempa\arabic{##1}\endcsname}
@@ -253,8 +268,8 @@
 
 % Education
 \newcommand{\educationListC}{\iftoggle{CurriculumVitae}
-{\newcounter{EGjndex}\forloop{EGjndex}{0}{\value{EGjndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGjndex}\endcsname{EGjndex}\par}}{}\iftoggle{Resume}
-{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex} \and \value{EGkndex} < \value{educationGradeindex}}{\noindent\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}\par}}{}}
+{\newcounter{EGjndex}\forloop{EGjndex}{0}{\value{EGjndex} < \value{educationGradeindex}}{\csname educationGrade\arabic{EGjndex}\endcsname{EGjndex}}}{}\iftoggle{Resume}
+{\newcounter{EGkndex}\forloop{EGkndex}{0}{\value{EGkndex} < \value{maxeducationGradeindex} \and \value{EGkndex} < \value{educationGradeindex}}{\csname educationGrade\arabic{EGkndex}\endcsname{EGkndex}}}{}}
 \newcommand{\education}{\iftoggle{EnglishToggle}{\section*{Education}}{}\iftoggle{PersianToggle}{\section*{سوابق تحصیلی}}{}\educationListC}
 
 
@@ -268,22 +283,28 @@
 \newcommand{\languageC}[9]{\expandafter\newcommand\csname language\arabic{languageindex}\endcsname
 {\iftoggle{EnglishToggle}{\languageE{#1}{#2}{#5}{#6}{#7}{#8}{#9}}{}\iftoggle{PersianToggle}{\languageP{#3}{#4}{#5}{#6}{#7}{#8}{#9}}{}}\addtocounter{languageindex}{1}}
 
-\newcommand{\languageTitle}{\iftoggle{EnglishToggle}
-{\parbox{189mm}{\colorbox{pink}
-{\bfseries\color{darkgray}\parbox{27mm}{Language}\parbox{27mm}{Certification}\parbox{108mm}{\parbox{108mm}{\centering Skill}\\\parbox{108mm}{\parbox{27mm}{\centering Reading}\parbox{27mm}{\centering Writing}\parbox{27mm}{\centering Speaking}\parbox{27mm}{\centering Listening}}}\parbox{27mm}{Grade}}}}
-{}\iftoggle{PersianToggle}{\ \parbox{189mm}{\colorbox{pink}
-{\bfseries\color{darkgray}\parbox{27mm}{\ زبان}\parbox{27mm}{\ مدرک}\parbox{108mm}{\parbox{108mm}{\centering مهارت}\\\parbox{108mm}{\parbox{27mm}{\centering\ خوانشی}\parbox{27mm}{\centering\ نگارشی}\parbox{27mm}{\centering\ گفتاری}\parbox{27mm}{\centering\ شنیداری}}}\parbox{27mm}{\ نمره از کل}}}}{}}
+\newcommand{\languageTitle}{\iftoggle{EnglishToggle}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=pink
+]\bfseries\color{darkgray}\parbox{27mm}{Language}\parbox{27mm}{Certification}\parbox{108mm}{\parbox{108mm}{\centering Skill}\\\parbox{108mm}{\parbox{27mm}{\centering Reading}\parbox{27mm}{\centering Writing}\parbox{27mm}{\centering Speaking}\parbox{27mm}{\centering Listening}}}\parbox{25.9mm}{Grade}
+\end{tcolorbox}}{}\iftoggle{PersianToggle}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=pink
+]\bfseries\color{darkgray}\parbox{27mm}{\ زبان}\parbox{27mm}{\ مدرک}\parbox{108mm}{\parbox{108mm}{\centering مهارت}\\\parbox{108mm}{\parbox{27mm}{\centering خوانشی}\parbox{27mm}{\centering نگارشی}\parbox{27mm}{\centering گفتاری}\parbox{27mm}{\centering شنیداری}}}\parbox{25.9mm}{\ نمره از کل}
+\end{tcolorbox}}{}}
 \newcommand{\languageE}[7]{\iftoggle{CurriculumVitae}
-{\parbox{28mm}{\ #1}\parbox{27mm}{\ #2}\parbox{27mm}{\centering\ #3}\parbox{27mm}{\centering\ #4}\parbox{27mm}{\centering\ #5}\parbox{27mm}{\centering\ #6}\parbox{27mm}{\ #7}}
+{\parbox{27mm}{\ #1}\parbox{27mm}{\ #2}\parbox{27mm}{\centering#3}\parbox{27mm}{\centering#4}\parbox{27mm}{\centering#5}\parbox{27mm}{\centering#6}\parbox{25.9mm}{\ #7}}
 {}\iftoggle{Resume}{#1 (#7)}{}}
 \newcommand{\languageP}[7]{\iftoggle{CurriculumVitae}
-{\parbox{28mm}{#1}\parbox{27mm}{#2}\parbox{27mm}{\centering#3}\parbox{27mm}{\centering#4}\parbox{27mm}{\centering#5}\parbox{27mm}{\centering#6}\parbox{27mm}{#7}}
+{\parbox{27mm}{\ #1}\parbox{27mm}{\ #2}\parbox{27mm}{\centering#3}\parbox{27mm}{\centering#4}\parbox{27mm}{\centering#5}\parbox{27mm}{\centering#6}\parbox{25.9mm}{\ #7}}
 {}\iftoggle{Resume}{#1 (#7)}{}}
 
 \newcommand{\languagelistC}{\iftoggle{CurriculumVitae}
-{\noindent\languageTitle\par\newcounter{languagejndex}\forloop{languagejndex}{0}{\value{languagejndex} < \value{languageindex}}{\noindent\csname language\arabic{languagejndex}\endcsname\par}}{}\iftoggle{Resume}
+{\languageTitle\newcounter{languagejndex}\forloop{languagejndex}{0}{\value{languagejndex} < \value{languageindex}}{\ifodd\value{languagejndex}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=pink!10
+]\csname language\arabic{languagejndex}\endcsname\end{tcolorbox}}\else{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=pink!16
+]\csname language\arabic{languagejndex}\endcsname\end{tcolorbox}}\fi}}{}\iftoggle{Resume}
 {\newcounter{languagekndex}\newcounter{languagelndex}\forloop{languagekndex}{0}{\value{languagekndex} < \value{maxlanguageindex} \and \value{languagekndex} < \value{languageindex}}{\noindent\csname language\arabic{languagekndex}\endcsname\addtocounter{languagelndex}{1}\ifthenelse{\value{languagelndex}<\value{maxlanguageindex} \and \value{languagelndex} < \value{languageindex}}{,\ }{}}}{}}
-\newcommand{\languageS}{\iftoggle{EnglishToggle}{\section*{Languages}}{}\iftoggle{PersianToggle}{\section*{زبان‌های خارجی}}{}\languagelistC}
+\newcommand{\languageS}{\iftoggle{EnglishToggle}{\section*{Languages}}{}\iftoggle{PersianToggle}{\section*{زبان‌های خارجی}}{}\vspace{-1em}\languagelistC}
 
 
 % Craft
@@ -292,24 +313,33 @@
 \newcommand{\craftC}[7]{\expandafter\newcommand\csname craft\arabic{craftindex}\endcsname
 {\iftoggle{EnglishToggle}{\craftE{#1}{#2}{#3}{#7}}{}\iftoggle{PersianToggle}{\craftP{#4}{#5}{#6}{#7}}{}}\addtocounter{craftindex}{1}}
 
-\newcommand{\craftE}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{119mm}{#1}\parbox{70mm}{\raggedleft#4}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}\iftoggle{Resume}{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{189mm}{\centering#1}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}}
-\newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}\iftoggle{Resume}
-{\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{189mm}{\centering#1}}\\
-{\parbox{75mm}{#2}\quad\parbox{111mm}{#3}}}}{}}
+\newcommand{\craftE}[4]{\iftoggle{CurriculumVitae}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
+]\bfseries\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedleft#4}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
+]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
+]\bfseries\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
+]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
+\newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
+]\bfseries\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedright#4}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
+]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
+]\bfseries\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
+]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
-{\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex} \and \value{craftkndex} < \value{craftindex}}{\noindent\csname craft\arabic{craftkndex}\endcsname\par}
-\noindent\parbox{190mm}{\colorbox{olive}
-{\bfseries\color{white}\parbox{189mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{زبان}{}}}\\\languagelistC}\par}{}}
-\newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\craftlistC}
+{\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\csname craft\arabic{craftjndex}\endcsname}}{}\iftoggle{Resume}
+{\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex} \and \value{craftkndex} < \value{craftindex}}{\csname craft\arabic{craftkndex}\endcsname}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
+]\bfseries\color{white}\parbox{187.9mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{زبان}{}}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
+]\languagelistC\end{tcolorbox}}{}}
+\newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\vspace{-1em}\craftlistC}
 
 
 % Familiarity
@@ -329,10 +359,16 @@
 
 
 % Voluntary position
-\newcommand{\voluntaryPositionE}[6]{\colorbox{green}
-{\bfseries\color{darkgray}\parbox{85mm}{#1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedleft#4 – #5}}\\#2}
-\newcommand{\voluntaryPositionP}[6]{\colorbox{green}
-{\bfseries\color{darkgray}\parbox{85mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{75mm}{\raggedright#4 - #5}}\\#2}
+\newcommand{\voluntaryPositionE}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green
+]\bfseries\color{darkgray}\parbox{84mm}{#1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedleft#4 – #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green!10
+]#2\end{tcolorbox}}
+\newcommand{\voluntaryPositionP}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green
+]\bfseries\color{darkgray}\parbox{84mm}{#1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green!10
+]#2\end{tcolorbox}}
 
 \newcommand{\voluntaryPositionC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname voluntaryPosition\arabic{voluntaryPositionindex}\endcsname
@@ -348,7 +384,7 @@
 
 % Voluntary
 \newcommand{\voluntaryListC}{\iftoggle{CurriculumVitae}
-{\newcounter{VPjndex}\forloop{VPjndex}{0}{\value{VPjndex} < \value{voluntaryPositionindex}}{\noindent\csname voluntaryPosition\arabic{VPjndex}\endcsname\par}}{}}
+{\newcounter{VPjndex}\forloop{VPjndex}{0}{\value{VPjndex} < \value{voluntaryPositionindex}}{\csname voluntaryPosition\arabic{VPjndex}\endcsname}}{}}
 \newcommand{\voluntary}{\iftoggle{EnglishToggle}{\section*{Voluntary}}{}\iftoggle{PersianToggle}{\section*{فعالیت‌های داوطلبانه}}{}\voluntaryListC}
 
 
@@ -374,14 +410,23 @@
 
 
 % Professional training
-\newcommand{\professionalTrainingE}[8]{\parbox{190mm}{\colorbox{lime}
-{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 – #5}}\\
-{\bfseries\color{darkgray}\ \parbox{85mm}{Duration: #2}\parbox{29mm}{\centering Score: #6}\parbox{75mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
-{\\#7}{}}
-\newcommand{\professionalTrainingP}[8]{\parbox{190mm}{\colorbox{lime}
-{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 - #5}}\\
-{\bfseries\color{darkgray}\parbox{85mm}{مدت زمان دوره: #2}\parbox{29mm}{\centering نمره: #6}\parbox{75mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
-{\\#7}{}}
+\newcommand{\professionalTrainingE}[8]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime
+]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedleft#4 – #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!16
+]\bfseries\color{darkgray}\parbox{84mm}{Duration: #2}\parbox{29mm}{\centering Score: #6}\parbox{74.9mm}{\raggedleft#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!10
+]#7\end{tcolorbox}}{}}
+
+\newcommand{\professionalTrainingP}[8]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime
+]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!16
+]\bfseries\color{darkgray}\parbox{84mm}{مدت زمان دوره: #2}\parbox{29mm}{\centering نمره: #6}\parbox{74.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!10
+]#7\end{tcolorbox}}{}}
 
 \newcommand{\professionalTrainingCI}[9]{
 \expandafter\def\csname tempPTa\arabic{PTindex}\endcsname{#1}
@@ -442,8 +487,8 @@
 
 % Training
 \newcommand{\professionalTrainingListC}{\iftoggle{CurriculumVitae}
-{\newcounter{PTIjndex}\forloop{PTIjndex}{0}{\value{PTIjndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIjndex}\endcsname{PTIjndex}\par}}{}\iftoggle{Resume}
-{\newcounter{PTIkndex}\forloop{PTIkndex}{0}{\value{PTIkndex} < \value{maxPTindex} \and \value{PTIkndex} < \value{PTindex}}{\noindent\csname professionalTraining\arabic{PTIkndex}\endcsname{PTIkndex}\par}}{}}
+{\newcounter{PTIjndex}\forloop{PTIjndex}{0}{\value{PTIjndex} < \value{PTindex}}{\csname professionalTraining\arabic{PTIjndex}\endcsname{PTIjndex}}}{}\iftoggle{Resume}
+{\newcounter{PTIkndex}\forloop{PTIkndex}{0}{\value{PTIkndex} < \value{maxPTindex} \and \value{PTIkndex} < \value{PTindex}}{\csname professionalTraining\arabic{PTIkndex}\endcsname{PTIkndex}}}{}}
 \newcommand{\training}{\iftoggle{EnglishToggle}{\section*{Professional Training}}{}\iftoggle{PersianToggle}{\section*{آموزش‌های حرفه‌ای}}{}\professionalTrainingListC}
 
 
@@ -480,14 +525,22 @@
 
 
 % Educational and teaching experience
-\newcommand{\teachingE}[8]{\parbox{190mm}{\colorbox{purple}
-{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft#4 – #5}}\\
-{\bfseries\color{darkgray}\ \parbox{72mm}{Total courses duration: #2}\parbox{55mm}{\centering Total students taught: #6}\parbox{62mm}{\raggedleft#3}}}\iftoggle{CurriculumVitae}
-{\\#7}{}}
-\newcommand{\teachingP}[8]{\parbox{190mm}{\colorbox{purple}
-{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright#4 - #5}}\\
-{\bfseries\color{darkgray}\parbox{81mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{71mm}{\raggedright#3}}}\iftoggle{CurriculumVitae}
-{\\#7}{}}
+\newcommand{\teachingE}[8]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple
+]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedleft#4 – #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!16
+]\bfseries\color{darkgray}\parbox{71mm}{Total courses duration: #2}\parbox{55mm}{\centering Total students taught: #6}\parbox{61.9mm}{\raggedleft#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!10
+]#7\end{tcolorbox}}{}}
+\newcommand{\teachingP}[8]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple
+]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!16
+]\bfseries\color{darkgray}\parbox{80mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{70.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!10
+]#7\end{tcolorbox}}{}}
 
 \newcommand{\teachingCI}[9]{
 \expandafter\def\csname tempETEa\arabic{ETEindex}\endcsname{#1}
@@ -548,8 +601,8 @@
 
 % Teaching
 \newcommand{\teachingListC}{\iftoggle{CurriculumVitae}
-{\newcounter{ETEjndex}\forloop{ETEjndex}{0}{\value{ETEjndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEjndex}\endcsname{ETEjndex}\par}}{}\iftoggle{Resume}
-{\newcounter{ETEkndex}\forloop{ETEkndex}{0}{\value{ETEkndex} < \value{maxETEindex} \and \value{ETEkndex} < \value{ETEindex}}{\noindent\csname teaching\arabic{ETEkndex}\endcsname{ETEkndex}\par}}{}}
+{\newcounter{ETEjndex}\forloop{ETEjndex}{0}{\value{ETEjndex} < \value{ETEindex}}{\csname teaching\arabic{ETEjndex}\endcsname{ETEjndex}}}{}\iftoggle{Resume}
+{\newcounter{ETEkndex}\forloop{ETEkndex}{0}{\value{ETEkndex} < \value{maxETEindex} \and \value{ETEkndex} < \value{ETEindex}}{\csname teaching\arabic{ETEkndex}\endcsname{ETEkndex}}}{}}
 \newcommand{\teaching}{\iftoggle{EnglishToggle}{\section*{Educational and Teaching Experience}}{}\iftoggle{PersianToggle}{\section*{سوابق آموزشی و تدریس}}{}\teachingListC}
 
 
@@ -560,14 +613,22 @@
 
 
 % Licenses and Certifications title
-\newcommand{\LicensesCertificationsTitleE}[6]{\parbox{190mm}{\colorbox{yellow}
-{\bfseries\color{darkgray}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Expiry Date: #5}}\\
-{\bfseries\color{darkgray}\ \parbox{114mm}{#2}\parbox{75mm}{\raggedleft Issue Date: #4}}}\iftoggle{CurriculumVitae}
-{\\#3}{}}
-\newcommand{\LicensesCertificationsTitleP}[6]{\parbox{190mm}{\colorbox{yellow}
-{\bfseries\color{darkgray}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright تاریخ انقضا: #5}}\\
-{\bfseries\color{darkgray}\parbox{114mm}{#2}\parbox{75mm}{\raggedright تاریخ صدور: #4}}}\iftoggle{CurriculumVitae}
-{\\#3}{}}
+\newcommand{\LicensesCertificationsTitleE}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow
+]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedleft Expiry Date: #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!16
+]\bfseries\color{darkgray}\parbox{113mm}{#2}\parbox{74.9mm}{\raggedleft Issue Date: #4}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!10
+]#3\end{tcolorbox}}{}}
+\newcommand{\LicensesCertificationsTitleP}[6]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow
+]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ انقضا: #5}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!16
+]\bfseries\color{darkgray}\parbox{113mm}{#2}\parbox{74.9mm}{\raggedright تاریخ صدور: #4}\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!10
+]#3\end{tcolorbox}}{}}
 
 \newcommand{\LicensesCertificationsTitleC}[9]{\ifthenelse{\value{#9}=0}
 {\expandafter\newcommand\csname LicensesCertificationsTitle\arabic{LCindex}\endcsname
@@ -583,8 +644,8 @@
 
 % Licenses and Certifications
 \newcommand{\LicensesCertificationsListC}{\iftoggle{CurriculumVitae}
-{\newcounter{LCjndex}\forloop{LCjndex}{0}{\value{LCjndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{LCkndex}\forloop{LCkndex}{0}{\value{LCkndex} < \value{maxLCindex} \and \value{LCkndex} < \value{LCindex}}{\noindent\csname LicensesCertificationsTitle\arabic{LCkndex}\endcsname\par}}{}}
+{\newcounter{LCjndex}\forloop{LCjndex}{0}{\value{LCjndex} < \value{LCindex}}{\csname LicensesCertificationsTitle\arabic{LCjndex}\endcsname}}{}\iftoggle{Resume}
+{\newcounter{LCkndex}\forloop{LCkndex}{0}{\value{LCkndex} < \value{maxLCindex} \and \value{LCkndex} < \value{LCindex}}{\csname LicensesCertificationsTitle\arabic{LCkndex}\endcsname}}{}}
 \newcommand{\LicensesCertifications}{\iftoggle{EnglishToggle}{\section*{Licenses and Certifications}}{}\iftoggle{PersianToggle}{\section*{گواهینامه‌ها و مجوزها}}{}\LicensesCertificationsListC}
 
 
@@ -595,14 +656,22 @@
 
 
 % Honors and Awards title
-\newcommand{\honorsAwardsTitleE}[5]{\parbox{190mm}{\colorbox{orange}
-{\bfseries\color{white}\parbox{114mm}{#1}\parbox{75mm}{\raggedleft Awarded: #4}}\\
-{\bfseries\color{darkgray}\ \parbox{190mm}{Approved by #2}}}\iftoggle{CurriculumVitae}
-{\\#3}{}}
-\newcommand{\honorsAwardsTitleP}[5]{\parbox{190mm}{\colorbox{orange}
-{\bfseries\color{white}\parbox{114mm}{\ #1}\parbox{75mm}{\raggedright تاریخ اهدا: #4}}\\
-{\bfseries\color{darkgray}\parbox{114mm}{به تأیید #2}}}\iftoggle{CurriculumVitae}
-{\\#3}{}}
+\newcommand{\honorsAwardsTitleE}[5]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange
+]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedleft Awarded: #4}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!16
+]\bfseries\color{darkgray}Approved by #2\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!10
+]#3\end{tcolorbox}}{}}
+\newcommand{\honorsAwardsTitleP}[5]{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange
+]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ اهدا: #4}\end{tcolorbox}\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!16
+]\bfseries\color{darkgray}به تأیید #2\end{tcolorbox}\iftoggle{CurriculumVitae}
+{\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!10
+]#3\end{tcolorbox}}{}}
 
 \newcommand{\honorsAwardsTitleC}[8]{\ifthenelse{\value{#8}=0}
 {\expandafter\newcommand\csname honorsAwardsTitle\arabic{HAindex}\endcsname
@@ -618,6 +687,6 @@
 
 % Honors and Awards
 \newcommand{\honorsAwardsListC}{\iftoggle{CurriculumVitae}
-{\newcounter{HAjndex}\forloop{HAjndex}{0}{\value{HAjndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{HAkndex}\forloop{HAkndex}{0}{\value{HAkndex} < \value{maxHAindex} \and \value{HAkndex} < \value{HAindex}}{\noindent\csname honorsAwardsTitle\arabic{HAkndex}\endcsname\par}}{}}
+{\newcounter{HAjndex}\forloop{HAjndex}{0}{\value{HAjndex} < \value{HAindex}}{\csname honorsAwardsTitle\arabic{HAjndex}\endcsname}}{}\iftoggle{Resume}
+{\newcounter{HAkndex}\forloop{HAkndex}{0}{\value{HAkndex} < \value{maxHAindex} \and \value{HAkndex} < \value{HAindex}}{\csname honorsAwardsTitle\arabic{HAkndex}\endcsname}}{}}
 \newcommand{\honorsAwards}{\iftoggle{EnglishToggle}{\section*{Honours and Awards}}{}\iftoggle{PersianToggle}{\section*{افتخارات و جوایز}}{}\honorsAwardsListC}

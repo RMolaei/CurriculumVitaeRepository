@@ -25,6 +25,8 @@ texdoc indentfirst
 @REM indentfirst used in .\lib\commonPackages.sty
 texdoc filecontents
 @REM filecontents used in .\lib\commonPackages.sty
+texdoc tcolorbox
+@REM tcolorbox used in .\lib\commonPackages.sty
 texdoc geometry
 @REM geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr

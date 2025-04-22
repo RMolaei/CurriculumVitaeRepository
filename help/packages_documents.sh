@@ -25,6 +25,8 @@ texdoc indentfirst
 # indentfirst used in .\lib\commonPackages.sty
 texdoc filecontents
 # filecontents used in .\lib\commonPackages.sty
+texdoc tcolorbox
+# tcolorbox used in .\lib\commonPackages.sty
 texdoc geometry
 # geometry used in .\lib\pagelayout.sty
 texdoc fancyhdr
