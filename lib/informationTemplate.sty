@@ -394,12 +394,16 @@
 \newcommand{\projectC}[4]{\expandafter\newcommand\csname project\arabic{projectindex}\endcsname
 {\iftoggle{EnglishToggle}{\projectE{#1}{#2}}{}\iftoggle{PersianToggle}{\projectP{#3}{#4}}{}}\addtocounter{projectindex}{1}}
 
-\newcommand{\projectE}[2]{{\bfseries#1}: #2}
-\newcommand{\projectP}[2]{{\bfseries#1}: #2}
+\newcommand{\projectE}[2]{{\bfseries#1}:\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=white
+]#2\end{tcolorbox}}
+\newcommand{\projectP}[2]{{\bfseries#1}:\begin{tcolorbox}[
+  enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=white
+]#2\end{tcolorbox}}
 
 \newcommand{\projectlistC}{\iftoggle{CurriculumVitae}
-{\newcounter{projectjndex}\forloop{projectjndex}{0}{\value{projectjndex} < \value{projectindex}}{\csname project\arabic{projectjndex}\endcsname\par}}{}\iftoggle{Resume}
-{\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex} \and \value{projectkndex} < \value{projectindex}}{\csname project\arabic{projectkndex}\endcsname\par}}{}}
+{\newcounter{projectjndex}\forloop{projectjndex}{0}{\value{projectjndex} < \value{projectindex}}{\csname project\arabic{projectjndex}\endcsname}}{}\iftoggle{Resume}
+{\newcounter{projectkndex}\forloop{projectkndex}{0}{\value{projectkndex} < \value{maxprojectindex} \and \value{projectkndex} < \value{projectindex}}{\csname project\arabic{projectkndex}\endcsname}}{}}
 \newcommand{\project}{\iftoggle{EnglishToggle}{\section*{Projects}}{}\iftoggle{PersianToggle}{\section*{پروژه‌ها}}{}\projectlistC}
 
 
