@@ -121,16 +121,16 @@
 
 % Institute
 \newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
-{\parbox{154mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{47mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{154mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{47mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
-{\parbox{154mm}{\raggedright\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
+{\parbox{154mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
 
 \newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
-{\parbox{154mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{47mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{154mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
+{\parbox{47mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
-{\parbox{154mm}{\raggedleft\Large\bfseries\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
+{\parbox{154mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
 
 \newcommand{\instituteC}[8]{\newtoggle{#8}
 \expandafter\newcommand\csname #8\endcsname
@@ -157,7 +157,7 @@
 ]#2\end{tcolorbox}}
 \newcommand{\jobPositionP}[6]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray
-]\bfseries\color{white}\parbox{84mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\parbox{84mm}{\ #1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=gray!10
 ]#2\end{tcolorbox}}
 
@@ -194,9 +194,9 @@
 ]\bfseries\color{darkgray}\parbox{84mm}{Minor: #3}\parbox{29mm}{\centering GPA: #8}\parbox{74.9mm}{\raggedleft#4}\end{tcolorbox}}
 \newcommand{\educationGradeP}[9]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown
-]\bfseries\color{white}\parbox{84mm}{#1 #2}\parbox{29mm}{\centering#5}\parbox{74.9mm}{\raggedright#6 - #7}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\parbox{84mm}{#1 #2}\parbox{29mm}{\centering#5}\parbox{74.9mm}{\raggedright#6 - #7}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=brown!16
-]\bfseries\color{darkgray}\parbox{84mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{74.9mm}{\raggedright#4}\end{tcolorbox}}
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{84mm}{گرایش: #3}\parbox{29mm}{\centering معدل: #8}\parbox{74.9mm}{\raggedright#4}\end{tcolorbox}}
 
 \newcommand{\educationGradeCI}[9]{
 \expandafter\def\csname tempa\arabic{educationGradeindex}\endcsname{#1}
@@ -288,7 +288,7 @@
 ]\bfseries\color{darkgray}\parbox{27mm}{Language}\parbox{27mm}{Certification}\parbox{108mm}{\parbox{108mm}{\centering Skill}\\\parbox{108mm}{\parbox{27mm}{\centering Reading}\parbox{27mm}{\centering Writing}\parbox{27mm}{\centering Speaking}\parbox{27mm}{\centering Listening}}}\parbox{25.9mm}{Grade}
 \end{tcolorbox}}{}\iftoggle{PersianToggle}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=pink
-]\bfseries\color{darkgray}\parbox{27mm}{\ زبان}\parbox{27mm}{\ مدرک}\parbox{108mm}{\parbox{108mm}{\centering مهارت}\\\parbox{108mm}{\parbox{27mm}{\centering خوانشی}\parbox{27mm}{\centering نگارشی}\parbox{27mm}{\centering گفتاری}\parbox{27mm}{\centering شنیداری}}}\parbox{25.9mm}{\ نمره از کل}
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{27mm}{\ زبان}\parbox{27mm}{\ مدرک}\parbox{108mm}{\parbox{108mm}{\centering مهارت}\\\parbox{108mm}{\parbox{27mm}{\centering خوانشی}\parbox{27mm}{\centering نگارشی}\parbox{27mm}{\centering گفتاری}\parbox{27mm}{\centering شنیداری}}}\parbox{25.9mm}{\ نمره از کل}
 \end{tcolorbox}}{}}
 \newcommand{\languageE}[7]{\iftoggle{CurriculumVitae}
 {\parbox{27mm}{\ #1}\parbox{27mm}{\ #2}\parbox{27mm}{\centering#3}\parbox{27mm}{\centering#4}\parbox{27mm}{\centering#5}\parbox{27mm}{\centering#6}\parbox{25.9mm}{\ #7}}
@@ -324,11 +324,11 @@
 ]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
 \newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
-]\bfseries\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedright#4}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedright#4}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
 ]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
-]\bfseries\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
 ]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
 
@@ -336,7 +336,7 @@
 {\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\csname craft\arabic{craftjndex}\endcsname}}{}\iftoggle{Resume}
 {\newcounter{craftkndex}\forloop{craftkndex}{0}{\value{craftkndex} < \value{maxcraftindex} \and \value{craftkndex} < \value{craftindex}}{\csname craft\arabic{craftkndex}\endcsname}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
-]\bfseries\color{white}\parbox{187.9mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{زبان}{}}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\color{white}\parbox{187.9mm}{\centering\iftoggle{EnglishToggle}{Language}{}\iftoggle{PersianToggle}{\smaller[0.5]زبان}{}}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
 ]\languagelistC\end{tcolorbox}}{}}
 \newcommand{\craft}{\iftoggle{EnglishToggle}{\section*{Craft}}{}\iftoggle{PersianToggle}{\section*{تخصص‌ها}}{}\vspace{-1em}\craftlistC}
@@ -366,7 +366,7 @@
 ]#2\end{tcolorbox}}
 \newcommand{\voluntaryPositionP}[6]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green
-]\bfseries\color{darkgray}\parbox{84mm}{#1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{84mm}{#1}\parbox{29mm}{\centering#3}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=green!10
 ]#2\end{tcolorbox}}
 
@@ -397,7 +397,7 @@
 \newcommand{\projectE}[2]{{\bfseries#1}:\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=white
 ]#2\end{tcolorbox}}
-\newcommand{\projectP}[2]{{\bfseries#1}:\begin{tcolorbox}[
+\newcommand{\projectP}[2]{{\bfseries\smaller[0.5]#1}:\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=white
 ]#2\end{tcolorbox}}
 
@@ -425,9 +425,9 @@
 
 \newcommand{\professionalTrainingP}[8]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime
-]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!16
-]\bfseries\color{darkgray}\parbox{84mm}{مدت زمان دوره: #2}\parbox{29mm}{\centering نمره: #6}\parbox{74.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{84mm}{مدت زمان دوره: #2}\parbox{29mm}{\centering نمره: #6}\parbox{74.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
 {\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=lime!10
 ]#7\end{tcolorbox}}{}}
@@ -539,9 +539,9 @@
 ]#7\end{tcolorbox}}{}}
 \newcommand{\teachingP}[8]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple
-]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright#4 - #5}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!16
-]\bfseries\color{darkgray}\parbox{80mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{70.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{80mm}{کل مدت زمان دوره(ها): #2}\parbox{37mm}{\centering تعداد کل دانش‌آموزان: #6}\parbox{70.9mm}{\raggedright#3}\end{tcolorbox}\iftoggle{CurriculumVitae}
 {\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=purple!10
 ]#7\end{tcolorbox}}{}}
@@ -627,9 +627,9 @@
 ]#3\end{tcolorbox}}{}}
 \newcommand{\LicensesCertificationsTitleP}[6]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow
-]\bfseries\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ انقضا: #5}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ انقضا: #5}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!16
-]\bfseries\color{darkgray}\parbox{113mm}{#2}\parbox{74.9mm}{\raggedright تاریخ صدور: #4}\end{tcolorbox}\iftoggle{CurriculumVitae}
+]\bfseries\smaller[0.5]\color{darkgray}\parbox{113mm}{#2}\parbox{74.9mm}{\raggedright تاریخ صدور: #4}\end{tcolorbox}\iftoggle{CurriculumVitae}
 {\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=yellow!10
 ]#3\end{tcolorbox}}{}}
@@ -670,9 +670,9 @@
 ]#3\end{tcolorbox}}{}}
 \newcommand{\honorsAwardsTitleP}[5]{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange
-]\bfseries\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ اهدا: #4}\end{tcolorbox}\begin{tcolorbox}[
+]\bfseries\smaller[0.5]\color{white}\parbox{113mm}{#1}\parbox{74.9mm}{\raggedright تاریخ اهدا: #4}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!16
-]\bfseries\color{darkgray}به تأیید #2\end{tcolorbox}\iftoggle{CurriculumVitae}
+]\bfseries\smaller[0.5]\color{darkgray}به تأیید #2\end{tcolorbox}\iftoggle{CurriculumVitae}
 {\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=orange!10
 ]#3\end{tcolorbox}}{}}
