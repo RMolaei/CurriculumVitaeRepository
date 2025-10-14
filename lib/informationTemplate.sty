@@ -20,8 +20,11 @@
   itemsep=0cm
 }
 \renewcommand{\labelitemi}{$\bullet$}
+\setlength{\leftmargini}{1.9em}
 \renewcommand{\labelitemii}{$\circ$}
+\setlength{\leftmarginii}{0.3em}
 \renewcommand{\labelitemiii}{$+$}
+\setlength{\leftmarginiii}{0.3em}
 
 \setlength{\parindent}{2mm}
 
@@ -317,20 +320,20 @@
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
 ]\bfseries\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedleft#4}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
-]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
+]\begin{minipage}[t]{87mm}#2\end{minipage}\hspace{3mm}\begin{minipage}[t]{97.9mm}#3\end{minipage}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
 ]\bfseries\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
-]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
+]\begin{minipage}[t]{87mm}#2\end{minipage}\hspace{3mm}\begin{minipage}[t]{97.9mm}#3\end{minipage}\end{tcolorbox}}{}}
 \newcommand{\craftP}[4]{\iftoggle{CurriculumVitae}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
 ]\bfseries\smaller[0.5]\color{white}\parbox{118mm}{#1}\parbox{69.9mm}{\raggedright#4}\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
-]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
+]\begin{minipage}[t]{87mm}#2\end{minipage}\hspace{3mm}\begin{minipage}[t]{97.9mm}#3\end{minipage}\end{tcolorbox}}{}\iftoggle{Resume}{\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, after skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive
 ]\bfseries\smaller[0.5]\color{white}\centering#1\end{tcolorbox}\begin{tcolorbox}[
   enhanced, breakable, top=1pt, bottom=1pt, right=1pt, left=1pt, before skip=0pt, boxrule=0pt, frame hidden, arc=0mm, colback=olive!16
-]\parbox{87mm}{#2}\parbox{100.9mm}{#3}\end{tcolorbox}}{}}
+]\begin{minipage}[t]{87mm}#2\end{minipage}\hspace{3mm}\begin{minipage}[t]{97.9mm}#3\end{minipage}\end{tcolorbox}}{}}
 
 \newcommand{\craftlistC}{\iftoggle{CurriculumVitae}
 {\newcounter{craftjndex}\forloop{craftjndex}{0}{\value{craftjndex} < \value{craftindex}}{\csname craft\arabic{craftjndex}\endcsname}}{}\iftoggle{Resume}
