@@ -110,14 +110,14 @@
 
 
 % Abbreviation and Acronym
-\newcommand{\abbreviationE}[3]{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}\iftoggle{Resume}{#2}{#1}\xspace}}
-\newcommand{\abbreviationP}[3]{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}\iftoggle{Resume}{#2}{#1}\xspace}}
+\newcommand{\abbreviationE}[3]{\iftoggle{CurriculumVitae}{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}#1\xspace}}{}\iftoggle{Resume}{#2\xspace}{}}
+\newcommand{\abbreviationP}[3]{\iftoggle{CurriculumVitae}{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}#1\xspace}}{}\iftoggle{Resume}{#2\xspace}{}}
 
 \newcommand{\abbreviationC}[5]{\newtoggle{#5}\expandafter\newcommand\csname #5\endcsname
 {\iftoggle{EnglishToggle}{\abbreviationE{#1}{#2}{#5}}{}\iftoggle{PersianToggle}{\abbreviationP{#3}{#4}{#5}}{}}}
 
-\newcommand{\acronymE}[3]{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}\iftoggle{Resume}{#2}{#1 (#2)}\xspace}}
-\newcommand{\acronymP}[3]{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}\iftoggle{Resume}{#2}{#1 (#2)}\xspace}}
+\newcommand{\acronymE}[3]{\iftoggle{CurriculumVitae}{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}#1 (#2)\xspace}}{}\iftoggle{Resume}{#2\xspace}{}}
+\newcommand{\acronymP}[3]{\iftoggle{CurriculumVitae}{\iftoggle{#3}{#2\xspace}{\abbreviationlistC{#1}{#2}{#3}\global\toggletrue{#3}#1 (#2)\xspace}}{}\iftoggle{Resume}{#2\xspace}{}}
 
 \newcommand{\acronymC}[5]{\newtoggle{#5}\expandafter\newcommand\csname #5\endcsname
 {\iftoggle{EnglishToggle}{\acronymE{#1}{#2}{#5}}{}\iftoggle{PersianToggle}{\acronymP{#3}{#4}{#5}}{}}}
@@ -130,13 +130,13 @@
 % Institute
 \newcommand{\instituteE}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
 {\parbox{154mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{47mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{47mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{\ResumeText#2\CVText\\Located on #3. Website: \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{154mm}{\raggedright\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
 
 \newcommand{\instituteP}[5]{\iftoggle{CurriculumVitae}{\iftoggle{#5}
 {\parbox{154mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\ResumeText\centering#3\CVText\\\url{#4}}}
-{\parbox{47mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{#2 #3 \url{#4}}\toggletrue{#5}}}
+{\parbox{47mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{0.9mm}{}\parbox{140mm}{\ResumeText#2\CVText\\آدرس: #3. تارنما: \url{#4}}\toggletrue{#5}}}
 {}\iftoggle{Resume}
 {\parbox{154mm}{\raggedleft\Large\bfseries\smaller[0.5]\color{blue}#1}\parbox{3.9mm}{}\parbox{30mm}{\centering#3\\\url{#4}}}{}}
 
