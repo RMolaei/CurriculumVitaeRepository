@@ -1,0 +1,1 @@
+latexmk -xelatex coverLetter.tex

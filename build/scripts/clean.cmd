@@ -1,0 +1,22 @@
+set /p "target="<target
+cd ..
+cd .\results\%target%\
+del .\*.pdf
+cd .\..\..\..\db\%target%\doc\cl\
+latexmk -C
+del .\coverLetter.bib
+del .\coverLetter.bbl
+cd ..
+cd .\cv\
+latexmk -C
+del .\englishCV.bib
+del .\englishCV.bbl
+del .\persianCV.bib
+del .\persianCV.bbl
+cd ..
+cd .\resume\
+latexmk -C
+del .\englishResume.bib
+del .\englishResume.bbl
+del .\persianResume.bib
+del .\persianResume.bbl
